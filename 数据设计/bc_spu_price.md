@@ -7,7 +7,7 @@
 /* 创建 bc_spu_price 基本表 */
 DROP TABLE IF EXISTS `bc_spu_price`;
 CREATE TABLE `bc_spu_price` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_price` int(11) NOT NULL AUTO_INCREMENT,
   `id_spu` int(11) NOT NULL COMMENT '商品SPU#',
   `id_warehouse` tinyint(4) NOT NULL COMMENT '仓库#',
   `user_rank` tinyint(4) NOT NULL DEFAULT '0' COMMENT '适用的用户级别(0为所有级别)',
