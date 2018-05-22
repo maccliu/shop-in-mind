@@ -1,6 +1,6 @@
 # bc_spu 基本表
 
-## SQL表定义
+## SQL定义
 
 ```sql
 DROP TABLE IF EXISTS `bc_spu`;
