@@ -1,16 +1,16 @@
-# bc_cfg_currency_rate 基本表
+# bc_currency_rate 基本表
 
-汇率设置。
+汇率设置表。
 
 ## SQL定义
 
 ```sql
 
-/* 创建 bc_cfg_currency_rate 基本表 */
+/* 创建 bc_currency_rate 基本表 */
 
-DROP TABLE IF EXISTS `bc_cfg_currency_rate`;
+DROP TABLE IF EXISTS `bc_currency_rate`;
 
-CREATE TABLE `bc_cfg_currency_rate` (
+CREATE TABLE `bc_currency_rate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `from` varchar(3) NOT NULL COMMENT '从...货币',
   `to` varchar(3) NOT NULL COMMENT '到...货币',
