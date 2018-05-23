@@ -1,4 +1,4 @@
-# bc_order_items 基本表
+# bc_order_item 基本表
 
 订单商品表。
 
