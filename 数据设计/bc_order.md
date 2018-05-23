@@ -12,6 +12,7 @@ CREATE TABLE `bc_order` (
   `order_ref` varchar(16) DEFAULT NULL COMMENT '订单参考号',
   
   `status` tinyint(4) NOT NULL COMMENT '订单状态',
+  `service_status` tinyint(1) DEFAULT '0' COMMENT '售后状态',
   
   `channel` tinyint(4) NOT NULL COMMENT '渠道：1网站 2代客下单 3小程序',
   `channel_order_id` int(11) NOT NULL COMMENT '渠道的订单id',
@@ -70,3 +71,6 @@ CREATE TABLE `bc_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单';
 
 ```
+
+> 备注：
+> 1. `service_status` 售后状态：0-无售后 1-售后中 9-售后完成。一般如果一个订单有售后，那么需要对这个订单做个标记，以便跟踪处理。
