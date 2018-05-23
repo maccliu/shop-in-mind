@@ -1,5 +1,7 @@
 # bc_spu_price 基本表
 
+商品定价表。
+
 ## SQL定义
 
 ```sql
