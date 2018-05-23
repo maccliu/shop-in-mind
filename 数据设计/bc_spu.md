@@ -16,7 +16,7 @@ CREATE TABLE `bc_spu` (
   `id_article` int(11) DEFAULT NULL COMMENT '商品文案#',
   `on_sale` tinyint(1) NOT NULL DEFAULT '0' COMMENT '上架：1上架 0下架',
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '已删除',
-  `attrs` blob COMMENT '单品参数 json格式',
+  `attrs` blob COMMENT '商品参数 json格式',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id_spu`)
