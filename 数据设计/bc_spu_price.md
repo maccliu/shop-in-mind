@@ -5,7 +5,9 @@
 ```sql
 
 /* 创建 bc_spu_price 基本表 */
+
 DROP TABLE IF EXISTS `bc_spu_price`;
+
 CREATE TABLE `bc_spu_price` (
   `id_price` int(11) NOT NULL AUTO_INCREMENT,
   `id_spu` int(11) NOT NULL COMMENT '商品SPU#',
