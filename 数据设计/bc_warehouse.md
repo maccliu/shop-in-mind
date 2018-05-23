@@ -8,7 +8,7 @@
 
 /* 创建 bc_warehouse 基本表 */
 
-DROP TABLE `bc_warehouse`;
+DROP TABLE IF EXISTS `bc_warehouse`;
 
 CREATE TABLE `bc_warehouse` (
   `id_warehouse` int(11) NOT NULL COMMENT '仓库id',
