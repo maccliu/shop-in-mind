@@ -20,7 +20,7 @@ CREATE TABLE `bc_order` (
   `id_user` int(11) NOT NULL COMMENT '客户id',
   `id_cart` int(11) NOT NULL COMMENT '购物车id',
   `id_warehouse` tinyint(4) NOT NULL COMMENT '发货仓库id',
-  `id_delivery_way` tinyint(4) NOT NULL COMMENT '交货方式id',
+  `id_delivery_way` tinyint(4) NOT NULL COMMENT '送货方式id',
   
   `order_currency` char(3) NOT NULL COMMENT '订单币种',
   `currency_rate` decimal(10,4) NOT NULL COMMENT '当时汇率',
