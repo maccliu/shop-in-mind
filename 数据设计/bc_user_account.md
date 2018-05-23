@@ -15,7 +15,7 @@ CREATE TABLE `bc_user_account` (
   `email` varchar(80) DEFAULT NULL COMMENT 'email',
   `email_confirmed_at` datetime DEFAULT NULL COMMENT 'Email的绑定时间',
   `salt` varchar(32) DEFAULT NULL COMMENT 'salt',
-  `pwdtype` tinyint(4) DEFAULT NULL COMMENT '密码类型',
+  `mode` tinyint(4) DEFAULT NULL COMMENT '验密模式',
   `pwdhash` varchar(64) DEFAULT NULL COMMENT '密码hash',
   `wx_openid` varchar(64) DEFAULT NULL COMMENT '微信openid',
   `wx_unionid` varchar(64) DEFAULT NULL COMMENT '微信unionid',
@@ -29,5 +29,5 @@ CREATE TABLE `bc_user_account` (
 
 > 备注：
 > 1. `mobile`、`email`必须在绑定后才能登录。
-> 2. 因为客户可能是从不同的渠道导入的（比如有淘宝渠道来的客户、有京东渠道来的用户、有自营商城来的客户），而各个渠道的验密模型又不一样，所以用 `pwdtype` 来标识相应的验密模型。
+> 2. 因为客户可能是从不同的渠道导入的（比如有淘宝渠道来的客户、有京东渠道来的用户、有自营商城来的客户、有微信小程序来的客户等），而各个渠道的验密算法又不一样，所以用 `mode` 来标识相应的验密模式。
 > 3. 登录时，要验证一下`deleted`是否为`1`。
