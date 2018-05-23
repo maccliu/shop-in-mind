@@ -7,7 +7,9 @@
 ```sql
 
 /* 创建 bc_cfg_user_rank 基本表 */
+
 DROP TABLE IF EXISTS `bc_cfg_user_rank`;
+
 CREATE TABLE `bc_cfg_user_rank` (
   `id_rank` tinyint(4) NOT NULL,
   `rank_name` varchar(30) NOT NULL COMMENT '级别名称',
