@@ -20,6 +20,7 @@ CREATE TABLE `bc_user_account` (
   `wx_openid` varchar(64) DEFAULT NULL COMMENT '微信openid',
   `wx_unionid` varchar(64) DEFAULT NULL COMMENT '微信unionid',
   `wx_confirmed_at` datetime DEFAULT NULL COMMENT '微信的绑定时间',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '已删除',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户的登录账户';
@@ -29,3 +30,4 @@ CREATE TABLE `bc_user_account` (
 > 备注：
 > 1. `mobile`、`email`必须在绑定后才能登录。
 > 2. 因为客户可能是从不同的渠道导入的（比如有淘宝渠道来的客户、有京东渠道来的用户、有自营商城来的客户），而各个渠道的验密模型又不一样，所以用 `pwdtype` 来标识相应的验密模型。
+> 3. 登录时，要验证一下`deleted`是否为`1`。
