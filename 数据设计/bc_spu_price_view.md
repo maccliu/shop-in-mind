@@ -1,5 +1,7 @@
 # bc_spu_price_view 视图
 
+商品价格视图。
+
 创建 `bc_spu_price_view` 视图的目的是为了使用价格分层机制，运用组内排序技术，从数据库直接得到商品在特定条件下的价格。而实现组内排序，需要构造一个预先排序的派生表。因为这个派生表会被经常使用，所以直接将这个预排序的派生表定义成本视图，方便程序中调用。
 
 ## SQL定义
@@ -7,7 +9,9 @@
 ```sql
 
 /* 创建 bc_spu_price_view 视图 */
+
 DROP VIEW IF EXISTS `bc_spu_price_view`;
+
 CREATE VIEW `bc_spu_price_view` AS
   SELECT DISTINCT
     `bc_spu_price`.`id_price` AS `id_price`,
