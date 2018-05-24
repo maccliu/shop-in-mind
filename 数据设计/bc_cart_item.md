@@ -1,4 +1,4 @@
-# bc_order_item 基本表
+# bc_cart_item 基本表
 
 购物车商品。
 
