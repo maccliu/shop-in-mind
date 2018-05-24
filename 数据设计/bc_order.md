@@ -28,7 +28,7 @@ CREATE TABLE `bc_order` (
   
   `id_warehouse` tinyint(4) NOT NULL COMMENT '发货仓库id',
   
-  `id_delivery_way` tinyint(4) NOT NULL COMMENT '送货方式id',
+  `id_delivery_mode` tinyint(4) NOT NULL COMMENT '送货方式id',
   `delivery_name` varchar(40) COMMENT '送货方式名称',
   
   `order_currency` char(3) NOT NULL COMMENT '结算币种',

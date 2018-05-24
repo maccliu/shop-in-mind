@@ -13,7 +13,7 @@ CREATE TABLE `bc_cart` (
   `status` tinyint(1) NOT NULL COMMENT '购物车状态',
 
   `id_warehouse` tinyint(4) DEFAULT NULL COMMENT '发货仓库id',
-  `id_delivery_way` tinyint(4) DEFAULT NULL COMMENT '送货方式id',
+  `id_delivery_mode` tinyint(4) DEFAULT NULL COMMENT '送货方式id',
   `currency` char(3) NOT NULL COMMENT '结算币种',
 
   `to_name` varchar(40) DEFAULT NULL COMMENT '收件人姓名',

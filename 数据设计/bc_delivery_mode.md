@@ -1,4 +1,4 @@
-# bc_delivery_way 基本表
+# bc_delivery_mode 基本表
 
 送货方式。
 
@@ -6,10 +6,10 @@
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_delivery_way`;
+DROP TABLE IF EXISTS `bc_delivery_mode`;
 
-CREATE TABLE `bc_delivery_way` (
-  `id_delivery_way` int(11) NOT NULL,
+CREATE TABLE `bc_delivery_mode` (
+  `id_delivery_mode` int(11) NOT NULL,
   `name` varchar(40) NOT NULL COMMENT '名称',
   
   `id_warehouse` int(11) NOT NULL COMMENT '适用的发货仓库id',
@@ -28,7 +28,7 @@ CREATE TABLE `bc_delivery_way` (
   
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   
-  PRIMARY KEY (`id_delivery_way`)
+  PRIMARY KEY (`id_delivery_mode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='送货方式';
 
 ```
