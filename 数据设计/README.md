@@ -4,9 +4,10 @@
 
 | 表 | 说明
 |----|----
+| [bc_user_rank](bc_user_rank.md) | 用户级别设置
 | [bc_warehouse](bc_warehouse.md) | 仓库设置
 | [bc_currency_rate](bc_currency_rate.md) | 汇率设置
-| [bc_user_rank](bc_user_rank.md) | 用户级别设置
+| [bc_delivery_mode](bc_delivery_mode.md) | 快递模板
 
 ## 用户
 
