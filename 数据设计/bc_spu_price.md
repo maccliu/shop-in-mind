@@ -30,7 +30,7 @@ CREATE TABLE `bc_spu_price` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `updated_by` int(11) DEFAULT NULL COMMENT '更新人',
 
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id_price`),
   UNIQUE KEY `uni_key` (`id_spu`,`id_warehouse`,`user_rank`,`price_type`,`currency`,`price`,`start_at`,`end_at`,`post_free`),
   KEY `id_spu` (`id_spu`),
   KEY `id_warehouse` (`id_warehouse`),
