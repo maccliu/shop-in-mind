@@ -16,14 +16,15 @@ CREATE VIEW `bc_spu_price_view` AS
   SELECT DISTINCT
     `bc_spu_price`.`id_price` AS `id_price`,
     `bc_spu_price`.`id_spu` AS `id_spu`,
-    `bc_spu_price`.`price_type` AS `price_type`,
-    `bc_spu_price`.`user_rank` AS `user_rank`,
     `bc_spu_price`.`id_warehouse` AS `id_warehouse`,
+    `bc_spu_price`.`user_rank` AS `user_rank`,
+    `bc_spu_price`.`price_type` AS `price_type`,
     `bc_spu_price`.`currency` AS `currency`,
     `bc_spu_price`.`price` AS `price`,
     `bc_spu_price`.`start_at` AS `start_at`,
     `bc_spu_price`.`end_at` AS `end_at`,
     `bc_spu_price`.`post_free` AS `post_free`,
+    `bc_spu_price`.`price_tag` AS `price_tag`,
     `bc_spu_price`.`updated_at` AS `updated_at`,
     `bc_spu_price`.`updated_by` AS `updated_by`
   FROM
