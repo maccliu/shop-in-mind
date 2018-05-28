@@ -45,6 +45,12 @@
 | [bc_order_payment](bc_order_payment.md) | 订单支付记录
 | [bc_order_service](bc_order_service.md) | 订单售后记录
 
+## 会话
+
+| 表 | 说明
+|----|----
+| [bc_session](bc_session.md) | 客户会话
+
 ## CMS
 
 | 表 | 说明
