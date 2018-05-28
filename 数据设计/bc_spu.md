@@ -9,6 +9,9 @@ DROP TABLE IF EXISTS `bc_spu`;
 
 CREATE TABLE `bc_spu` (
   `id_spu` int(11) NOT NULL AUTO_INCREMENT,
+
+  `id_warehouse` tinyint(4) NOT NULL COMMENT '发货仓id',
+
   `title` varchar(255) NOT NULL COMMENT '商品标题',
 
   `weight` float DEFAULT NULL COMMENT '商品重量',
@@ -35,7 +38,8 @@ CREATE TABLE `bc_spu` (
 
 > 备注
 > 1. 为考虑尽可能兼容原系统中的商品数据，所以本表中的`id_spu`没有设计成自增，必须明确指定。
-> 2. `id_spu`的1-9999 保留给原系统的商品数据使用。新的商品最好使用10000以上的id，以免和原系统商品冲突。
+> 2. `id_spu`的1-9999 保留给原系统的商品新西兰仓使用，10000-19999 保留给原系统商品的国内仓使用，新系统的商品用100000（6位数）id，以免和原系统商品冲突。
+> 3. 为确保数据一致性，1-9999 和 10001-19999 是严格的一一对应关系。
 
 
 ## 从原ECSHOP中导入商品数据
@@ -46,6 +50,7 @@ INSERT INTO
   `bc_spu`
     (
     `id_spu`,
+    `id_warehouse`,
     `title`,
     `weight`,
     `weight_unit`,
@@ -59,6 +64,7 @@ INSERT INTO
 
   SELECT
     `goods_id`,
+    2,
     `goods_name`,
     `goods_weight` * 1000,
     '克',
@@ -70,4 +76,37 @@ INSERT INTO
     from_unixtime(`last_update`)
   FROM
     `cn_goods`
+;
+
+INSERT INTO
+  `bc_spu`
+    (
+    `id_spu`,
+    `id_warehouse`,
+    `title`,
+    `weight`,
+    `weight_unit`,
+    `on_sale`,
+    `deleted`,
+    `image`,
+    `thumb`,
+    `created_at`,
+    `updated_at`
+    )
+
+  SELECT
+    (`goods_id` + 10000),
+    1,
+    `goods_name`,
+    `goods_weight` * 1000,
+    '克',
+    `is_on_sale`,
+    `is_delete`,
+    `goods_img`,
+    `goods_thumb`,
+    from_unixtime(`add_time`),
+    from_unixtime(`last_update`)
+  FROM
+    `cn_goods`
+;
 ```
