@@ -13,7 +13,7 @@ CREATE TABLE `bc_cart_item` (
   
   `id_cart` int(11) NOT NULL COMMENT '购物车id',
   `id_spu` int(11) NOT NULL COMMENT '商品id',
-  `qty` int(11) NOT NULL COMMENT '商品数量',
+  `qty` int(11) unsigned NOT NULL COMMENT '商品数量',
   `checked` tinyint(1) NOT NULL DEFAULT '1' COMMENT '选中',
   
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
