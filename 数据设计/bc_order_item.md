@@ -14,7 +14,7 @@ CREATE TABLE `bc_order_item` (
 
   `id_spu` int(11) NOT NULL COMMENT '商品id',
   `title` varchar(255) NOT NULL COMMENT '商品名称',
-  `qty` int(11) NOT NULL COMMENT '商品数量',
+  `qty` int(11) unsigned NOT NULL COMMENT '商品数量',
 
   `weight` float NOT NULL COMMENT '商品毛重(克)',
 
