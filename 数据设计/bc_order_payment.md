@@ -15,8 +15,8 @@ CREATE TABLE `bc_order_payment` (
   `currency` varchar(3) NOT NULL COMMENT '支付币种',
   `amount` decimal(15,4) NOT NULL COMMENT '金额',
 
-  `payment_method` tinyint(4) NOT NULL COMMENT '支付方式',
-  `id_reference` int(11) DEFAULT NULL COMMENT '对应的凭据id',
+  `payment_method` varchar(20) NOT NULL COMMENT '支付方式',
+  `id_reference` int(11) DEFAULT NULL COMMENT '支付记录的检索id',
   `data` blob COMMENT '相关数据',
 
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
