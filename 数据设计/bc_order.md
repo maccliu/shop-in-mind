@@ -29,7 +29,8 @@ CREATE TABLE `bc_order` (
   /* 物流信息 */
   `id_warehouse` tinyint(4) NOT NULL COMMENT '发货仓库id',
   `id_delivery_way` tinyint(4) NOT NULL COMMENT '送货方式id',
-  `delivery_name` varchar(40) DEFAULT NULL COMMENT '送货方式名称',
+  `delivery_vendor` varchar(40) DEFAULT NULL COMMENT '快递公司名',
+  `delivery_range` varchar(40) DEFAULT NULL COMMENT '送货区域',
 
   /* 收件人 */
   `to_name` varchar(40) DEFAULT NULL COMMENT '收件人姓名',
