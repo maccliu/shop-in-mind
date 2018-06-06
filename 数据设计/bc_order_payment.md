@@ -9,7 +9,7 @@
 DROP TABLE IF EXISTS `bc_order_payment`;
 
 CREATE TABLE `bc_order_payment` (
-  `id_payment` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   
   `id_order` int(11) NOT NULL COMMENT '订单id',
   `order_ref` varchar(32) DEFAULT NULL COMMENT '订单参考号',
@@ -24,7 +24,7 @@ CREATE TABLE `bc_order_payment` (
   
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   
-  PRIMARY KEY (`id_payment`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `payment_ref` (`payment_ref`),
   KEY `id_order` (`id_order`),
   KEY `order_ref` (`order_ref`)
