@@ -12,7 +12,7 @@ CREATE TABLE `bc_order_status` (
   `id_order` int(11) NOT NULL COMMENT '订单id',
 
   /* 整体状态 */
-  `status` tinyint(4) DEFAULT '0' COMMENT '订单整体状态',
+  `status` tinyint(4) DEFAULT '1' COMMENT '订单状态',
 
   /* 支付状态 */
   `paid_status` tinyint(4) DEFAULT '0' COMMENT '支付状态',
@@ -55,10 +55,10 @@ CREATE TABLE `bc_order_status` (
 
 | `status` | 说明
 |:--:|:--
-| 0 | 待支付
-| 1 | 待发货
-| 2 | 待收货
-| 3 | 待评价
-| 4 | 有售后
-| 5 | 已取消
+| 1 | 待支付
+| 2 | 待发货
+| 3 | 待收货
+| 4 | 待评价
+| 5 | 有售后
+| 6 | 已取消
 | 9 | 完成
