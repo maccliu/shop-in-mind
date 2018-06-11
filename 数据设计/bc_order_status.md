@@ -18,7 +18,7 @@ CREATE TABLE `bc_order_status` (
   `paid_status` tinyint(4) DEFAULT '0' COMMENT '支付状态',
   `paid_time` datetime DEFAULT NULL COMMENT '支付状态的更新时间',
   `pay_before` datetime DEFAULT NULL COMMENT '等待支付的截止时间',
-  `order_total_amount` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '订单应付总金额 以基准币种计',
+  `order_total_amount` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '订单总金额 以基准币种计',
   `order_paid_amount` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '已支付金额 以基准币种计',
 
   /* 配货状态 */
