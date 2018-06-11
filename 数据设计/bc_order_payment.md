@@ -20,6 +20,9 @@ CREATE TABLE `bc_order_payment` (
   `payment_method` varchar(20) NOT NULL COMMENT '支付方式',
   `payment_ref` varchar(32) DEFAULT NULL COMMENT '支付记录的检索id',
   
+  `paid_at` datetime NOT NULL COMMENT '支付完成的时间',
+  `bank_code` varchar(30) DEFAULT NULL COMMENT '银行代码',
+  
   `data` blob COMMENT '相关数据',
   
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
