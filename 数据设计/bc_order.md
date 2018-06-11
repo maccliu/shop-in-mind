@@ -75,7 +75,7 @@ CREATE TABLE `bc_order` (
 
   `order_tax` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '订单的总税额 以基准币种计',
 
-  `order_payable_amount` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '订单应付总金额 以基准币种计',
+  `order_total_amount` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '订单应付总金额 以基准币种计',
 
   /* 营销 */
   `id_referer` int(11) DEFAULT NULL COMMENT '订单推荐人id',
