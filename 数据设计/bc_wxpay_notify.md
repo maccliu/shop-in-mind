@@ -13,8 +13,11 @@ CREATE TABLE `bc_wxpay_notify` (
 
   `out_trade_no` varchar(32) DEFAULT NULL COMMENT '商户订单号',
   `transaction_id` varchar(32) NOT NULL COMMENT '微信支付交易id',
+  `openid` varchar(64) DEFAULT NULL COMMENT '微信用户id',
+
   `fee_type` varchar(8) DEFAULT NULL COMMENT '币种',
   `total_fee` int(11) DEFAULT NULL COMMENT '交易金额(分)',
+
   `paid_at` datetime DEFAULT NULL COMMENT '支付完成的时间',
 
   `check_sign` tinyint(1) DEFAULT NULL COMMENT '签名验证成功',
@@ -25,7 +28,9 @@ CREATE TABLE `bc_wxpay_notify` (
 
   PRIMARY KEY (`id`),
   KEY `out_trade_no` (`out_trade_no`),
-  KEY `transaction_id` (`transaction_id`)
+  KEY `transaction_id` (`transaction_id`),
+  KEY `openid` (`openid`),
+  KEY `paid_at` (`paid_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='微信支付结果通知';
 
 ```
