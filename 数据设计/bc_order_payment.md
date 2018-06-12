@@ -13,10 +13,10 @@ CREATE TABLE `bc_order_payment` (
   
   `id_order` int(11) NOT NULL COMMENT '订单id',
   `order_ref` varchar(32) DEFAULT NULL COMMENT '订单参考号',
-  `user_ref` varchar(64) DEFAULT NULL COMMENT '用户索引号',
+  `user_ref` varchar(64) DEFAULT NULL COMMENT '用户参考号',
   
   `currency` varchar(3) NOT NULL COMMENT '支付币种',
-  `amount` decimal(15,4) NOT NULL COMMENT '金额',
+  `amount` decimal(12,2) NOT NULL COMMENT '金额',
   
   `payment_method` varchar(20) NOT NULL COMMENT '支付方式',
   `payment_ref` varchar(32) DEFAULT NULL COMMENT '支付记录的检索id',
