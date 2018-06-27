@@ -1,4 +1,4 @@
-# bc_delivery_rule 基本表
+# bc_post_rule 基本表
 
 运价规则。
 
@@ -6,30 +6,29 @@
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_delivery_rule`;
+DROP TABLE IF EXISTS `bc_post_rule`;
 
-CREATE TABLE `bc_delivery_rule` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `bc_post_rule` (
+  `id_post_rule` int(11) NOT NULL,
 
   `name` varchar(40) NOT NULL COMMENT '名称',
-  `range` varchar(255) DEFAULT NULL COMMENT '送货范围说明',
+  `range` varchar(255) DEFAULT NULL COMMENT '送货范围',
 
   `id_warehouse` int(11) NOT NULL COMMENT '适用的发货仓库id',
 
   `currency` varchar(3) DEFAULT 'NZD' COMMENT '币种',
   `unit` varchar(10) DEFAULT '克' COMMENT '重量的单位',
 
-  `rule` text COMMENT '运价规则(json格式)',
+  `rule` text COMMENT '运价规则，json格式',
 
-  `disp_order` float DEFAULT '9999' COMMENT '显示顺序',
+  `disp_order` float DEFAULT '0' COMMENT '显示顺序',
 
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id`),
-  KEY `id_warehouse` (`id_warehouse`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='运价模板';
+  PRIMARY KEY (`id_post_rule`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='运价规则';
 
 ```
 
