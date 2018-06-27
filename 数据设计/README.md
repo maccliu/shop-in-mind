@@ -7,7 +7,7 @@
 | [bc_user_rank](bc_user_rank.md) | 用户级别设置
 | [bc_warehouse](bc_warehouse.md) | 仓库设置
 | [bc_currency_rate](bc_currency_rate.md) | 汇率设置
-| [bc_delivery_mode](bc_delivery_mode.md) | 快递模板
+| [bc_post_rule](bc_post_rule.md) | 运价规则
 
 ## 用户
 
@@ -16,17 +16,19 @@
 | [bc_user](bc_user.md) | 用户主表
 | [bc_user_account](bc_user_account.md) | 用户登录账号
 | [bc_user_safe_question](bc_user_safe_question.md) | 用户安全问题
+| [bc_user_address](bc_user_address.md) | 用户地址本
 
 ## 商品
 
 | 表 | 说明
 |----|----
 | [bc_spu](bc_spu.md) | 商品主表
-| [bc_spu_price](bc_spu_price.md) | 商品价格表
-| [bc_spu_price_view](bc_spu_price_view.md) | 商品价格视图
-| [bc_detail](bc_detail.md) | 商品详情
-| [bc_detail_image](bc_detail_image.md) | 商品详情图片
+| [bc_spu_detail](bc_spu_detail.md) | 商品详情
 
+## 价格
+
+| [bc_price_pool](bc_price_pool.md) | 商品价格池
+| [bc_price_view](bc_price_view.md) | 商品价格视图
 
 ## 购物车
 

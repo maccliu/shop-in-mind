@@ -1,14 +1,14 @@
-# bc_spu_price 基本表
+# bc_price_pool 基本表
 
-商品价格表。
+商品价格池。
 
 ## SQL定义
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_spu_price`;
+DROP TABLE IF EXISTS `bc_price_pool`;
 
-CREATE TABLE `bc_spu_price` (
+CREATE TABLE `bc_price_pool` (
   `id_price` int(11) NOT NULL AUTO_INCREMENT,
   `id_spu` int(11) NOT NULL COMMENT '商品SPU#',
 
@@ -45,12 +45,12 @@ CREATE TABLE `bc_spu_price` (
 ```sql
 
 /* 清空价格表 */
-TRUNCATE TABLE `bc_spu_price`;
+TRUNCATE TABLE `bc_price_pool`;
 
 
 /* 只删除 ECSHOP 导入的商品价格（id<20000的） */
 DELETE FROM
-  `bc_spu_price`
+  `bc_price_pool`
 WHERE
   `id_spu` < 20000
 ;
@@ -58,7 +58,7 @@ WHERE
 
 /* 导入 cn_goods 中的会员基本价格 */
 INSERT INTO
-  `bc_spu_price`
+  `bc_price_pool`
     (
     `id_spu`,
     `user_rank`,
@@ -91,7 +91,7 @@ ON DUPLICATE KEY UPDATE
 
 /* 导入 cn_goods_ex 的新西兰仓价格 */
 INSERT INTO
-  `bc_spu_price`
+  `bc_price_pool`
     (
     `id_spu`,
     `user_rank`,
@@ -135,7 +135,7 @@ ON DUPLICATE KEY UPDATE
  * 注意：是 (goods_id + 10000)
  */
 INSERT INTO
-  `bc_spu_price`
+  `bc_price_pool`
     (
     `id_spu`,
     `user_rank`,
@@ -179,7 +179,7 @@ ON DUPLICATE KEY UPDATE
  * 此促销价仅针对新西兰仓
  */
 INSERT INTO
-  `bc_spu_price`
+  `bc_price_pool`
     (
     `id_spu`,
     `user_rank`,
