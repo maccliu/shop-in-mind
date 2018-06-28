@@ -44,19 +44,33 @@ CREATE TABLE `bc_price_pool` (
 
 ```sql
 
-/* 清空价格表 */
+/*
+  清空价格表，根据需要看是不是重置整个价格池
+  如果员工已经设置了一些商品的价格，则不要用这条语句。
+*/
 TRUNCATE TABLE `bc_price_pool`;
 
 
-/* 只删除 ECSHOP 导入的商品价格（id<20000的） */
+/**
+ * 从ECSHOP的数据库导入SPU的价格
+ */
+
+
+/*
+  只删除 ECSHOP 导入的商品价格（id<20000,且价格级别为10，20，30的记录）
+*/
 DELETE FROM
   `bc_price_pool`
 WHERE
   `id_spu` < 20000
+  AND `price_level` IN (10, 20, 30)
 ;
 
 
-/* 导入 cn_goods 中的会员基本价格 */
+/*
+  导入 cn_goods 中的会员基本价格
+  币种为NZD
+*/
 INSERT INTO
   `bc_price_pool`
     (
@@ -85,11 +99,14 @@ INSERT INTO
     `cn_user_rank`.`rank_id`
 
 ON DUPLICATE KEY UPDATE
-   `id_spu` = `id_spu`
+  `id_spu` = `id_spu`
 ;
 
 
-/* 导入 cn_goods_ex 的新西兰仓价格 */
+/*
+  导入 cn_goods_ex 的新西兰仓价格
+  币种为NZD或者RMB
+*/
 INSERT INTO
   `bc_price_pool`
     (
@@ -106,34 +123,37 @@ INSERT INTO
     `cn_goods_ex`.`goods_id`,
     `cn_user_rank`.`rank_id`,
     20 AS `price_level`,
-    'NZD' AS `currency`,
-    round(`cn_goods`.`shop_price` * `cn_user_rank`.`discount` / 100.0, 2) AS `price`,
+    `cn_goods_ex`.`currency`,
+    round(`cn_goods_ex`.`price` * `cn_user_rank`.`discount` / 100.0, 2) AS `price`,
     `cn_goods`.`is_shipping`,
     from_unixtime(`cn_goods`.`last_update`) AS `updated_at`
   FROM
     `cn_goods_ex`
+  LEFT JOIN
+    `cn_user_rank`
+      ON true
   INNER JOIN
     `cn_goods`
       ON
         `cn_goods_ex`.`goods_id` = `cn_goods`.`goods_id`
-  LEFT JOIN
-    `cn_user_rank`
-      ON true
   WHERE
     `cn_goods_ex`.`warehouse_id` = 2
+    AND `cn_goods_ex`.`price` IS NOT NULL
+    AND `cn_goods_ex`.`price` > 0
   ORDER BY
     `cn_goods`.`goods_id`,
     `cn_user_rank`.`rank_id`
 
 ON DUPLICATE KEY UPDATE
-   `id_spu` = `id_spu`
+  `id_spu` = `id_spu`
 ;
 
 
 /*
- * 导入 cn_goods_ex 的国内仓价格
- * 注意：是 (goods_id + 10000)
- */
+  导入 cn_goods_ex 的国内仓价格
+  币种为NZD或者RMB
+  注意：id_spu是(goods_id + 10000)
+*/
 INSERT INTO
   `bc_price_pool`
     (
@@ -150,34 +170,37 @@ INSERT INTO
     (`cn_goods_ex`.`goods_id` + 10000),
     `cn_user_rank`.`rank_id`,
     20 AS `price_level`,
-    'NZD' AS `currency`,
-    round(`cn_goods`.`shop_price` * `cn_user_rank`.`discount` / 100.0, 2) AS `price`,
+    `cn_goods_ex`.`currency`,
+    round(`cn_goods_ex`.`price` * `cn_user_rank`.`discount` / 100.0, 2) AS `price`,
     `cn_goods`.`is_shipping`,
     from_unixtime(`cn_goods`.`last_update`) AS `updated_at`
   FROM
     `cn_goods_ex`
+  LEFT JOIN
+    `cn_user_rank`
+      ON true
   INNER JOIN
     `cn_goods`
       ON
         `cn_goods_ex`.`goods_id` = `cn_goods`.`goods_id`
-  LEFT JOIN
-    `cn_user_rank`
-      ON true
   WHERE
     `cn_goods_ex`.`warehouse_id` = 1
+    AND `cn_goods_ex`.`price` IS NOT NULL
+    AND `cn_goods_ex`.`price` > 0
   ORDER BY
     `cn_goods`.`goods_id`,
     `cn_user_rank`.`rank_id`
 
 ON DUPLICATE KEY UPDATE
-   `id_spu` = `id_spu`
+  `id_spu` = `id_spu`
 ;
 
 
 /*
- * 导入 cn_goods 的促销价
- * 此促销价仅针对新西兰仓
- */
+  导入 cn_goods 里面的促销价
+  此促销价仅针对新西兰仓商品
+  币种为NZD
+*/
 INSERT INTO
   `bc_price_pool`
     (
@@ -195,7 +218,7 @@ INSERT INTO
 
   SELECT
     `cn_goods`.`goods_id`,
-    0 AS `user_rank`,
+    `cn_user_rank`.`rank_id`,
     30 AS `price_level`,
     'NZD' AS `currency`,
     `cn_goods`.`promote_price`,
@@ -223,6 +246,9 @@ INSERT INTO
     from_unixtime(`cn_goods`.`last_update`) AS `updated_at`
   FROM
     `cn_goods`
+  LEFT JOIN
+    `cn_user_rank`
+      ON true
   WHERE
     `cn_goods`.`promote_price` > 0
   ORDER BY
