@@ -11,6 +11,7 @@
 DROP VIEW IF EXISTS `bc_price_view`;
 
 CREATE VIEW `bc_price_view` AS
+
   SELECT DISTINCT
     `bc_price_pool`.`id_price` AS `id_price`,
     `bc_price_pool`.`id_spu` AS `id_spu`,
@@ -18,8 +19,10 @@ CREATE VIEW `bc_price_view` AS
     `bc_price_pool`.`user_rank` AS `user_rank`,
 
     `bc_price_pool`.`price_level` AS `price_level`,
-    `bc_price_pool`.`currency` AS `currency`,
-    `bc_price_pool`.`price` AS `price`,
+
+    'NZD' AS `currency`,
+    (`bc_price_pool`.`price` * `bc_currency_rate`.`rate`) AS `price`,
+
     `bc_price_pool`.`start_at` AS `start_at`,
     `bc_price_pool`.`end_at` AS `end_at`,
     `bc_price_pool`.`post_free` AS `post_free`,
@@ -29,12 +32,20 @@ CREATE VIEW `bc_price_view` AS
     `bc_price_pool`.`updated_by` AS `updated_by`
   FROM
     `bc_price_pool`
+  INNER JOIN
+    `bc_currency_rate`
+      ON
+        `bc_currency_rate`.`from` = `bc_price_pool`.`currency`
+        AND `bc_currency_rate`.`to` = "NZD"
   ORDER BY
     `bc_price_pool`.`id_spu`,
     `bc_price_pool`.`price_level` DESC,
-    `bc_price_pool`.`user_rank` DESC;
+    `bc_price_pool`.`user_rank` DESC
+
+;
 
 ```
 
 > 备注:
-> 1. `bc_price_view` 的 `SELECT` 中，必须要加上 `DISTINCT`，这是一个 **关键技术知识点** ：不加DISTINCT的话，组内排序是无法实现的，`group by` 最终出来的结果会是mysql的默认排序，而不是我们希望的是按照指定字段排序。
+> 1. `bc_price_view` 的 `SELECT` 中，必须要加上 `DISTINCT`，这是一个 **关键技术知识点** ：不加DISTINCT的话，对这个视图的组内排序是无法实现的，`group by` 最终出来的结果会是mysql的默认排序，而不是我们希望的是按照指定字段排序。
+> 2. 本视图已经将币种全部转为NZD，方便代码中进行归一化处理。但是bc_price_pool中的原始价格数据还是保留定义的币种。
