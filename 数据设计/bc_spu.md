@@ -23,7 +23,8 @@ CREATE TABLE `bc_spu` (
   `image` varchar(255) DEFAULT NULL COMMENT '主图',
   `thumb` varchar(255) DEFAULT NULL COMMENT '缩略图',
 
-  `id_detail` int(11) DEFAULT NULL COMMENT '商品详情页#',
+  `id_brand` int(11) DEFAULT NULL COMMENT '品牌id',
+
   `uom` varchar(20) DEFAULT NULL COMMENT '销售单位',
 
   `attrs` blob COMMENT '单品参数 json格式',
@@ -45,7 +46,15 @@ CREATE TABLE `bc_spu` (
 ## 从原ECSHOP中导入商品数据
 
 ```sql
-/* 从 cn_goods 中导入数据 */
+
+/* 删除旧数据 */
+DELETE FROM
+  `bc_spu`
+WHERE
+  `id_spu` BETWEEN 1 AND 19999;
+
+
+/* 商品，新西兰直邮仓 */
 INSERT INTO
   `bc_spu`
     (
@@ -58,6 +67,7 @@ INSERT INTO
     `deleted`,
     `image`,
     `thumb`,
+    `id_brand`,
     `created_at`,
     `updated_at`
     )
@@ -72,12 +82,15 @@ INSERT INTO
     `is_delete`,
     `goods_img`,
     `goods_thumb`,
+    `brand_id`,
     from_unixtime(`add_time`),
     from_unixtime(`last_update`)
   FROM
     `cn_goods`
 ;
 
+
+/* 商品，国内仓 */
 INSERT INTO
   `bc_spu`
     (
@@ -90,6 +103,7 @@ INSERT INTO
     `deleted`,
     `image`,
     `thumb`,
+    `id_brand`,
     `created_at`,
     `updated_at`
     )
@@ -104,9 +118,11 @@ INSERT INTO
     `is_delete`,
     `goods_img`,
     `goods_thumb`,
+    `brand_id`,
     from_unixtime(`add_time`),
     from_unixtime(`last_update`)
   FROM
     `cn_goods`
 ;
+
 ```
