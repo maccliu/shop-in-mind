@@ -19,3 +19,54 @@ CREATE TABLE `bc_category_spu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ```
+
+## 导入数据
+
+```sql
+
+/*
+  删除id_spu在1-20000间的商品
+*/
+DELETE FROM
+  `bc_category_spu`
+WHERE
+  `id_spu` BETWEEN 1 AND 19999
+;
+
+
+/*
+  新西兰仓的商品
+*/
+INSERT INTO
+  `bc_category_spu`
+  (
+    `id_category`,
+    `id_spu`
+  )
+
+  SELECT
+    `cat_id`,
+    `goods_id`
+  FROM
+    `cn_goods`
+;
+
+
+/*
+  国内仓的商品
+*/
+INSERT INTO
+  `bc_category_spu`
+  (
+    `id_category`,
+    `id_spu`
+  )
+
+  SELECT
+    `cat_id`,
+    (`goods_id` + 10000)
+  FROM
+    `cn_goods`
+;
+
+```
