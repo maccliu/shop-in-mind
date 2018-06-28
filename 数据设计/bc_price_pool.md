@@ -94,6 +94,8 @@ INSERT INTO
   FROM
     `cn_goods`,
     `cn_user_rank`
+  WHERE
+    `cn_goods`.`shop_price` > 0
   ORDER BY
     `cn_goods`.`goods_id`,
     `cn_user_rank`.`rank_id`
