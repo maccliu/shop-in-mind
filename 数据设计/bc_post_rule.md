@@ -10,14 +10,13 @@ DROP TABLE IF EXISTS `bc_post_rule`;
 
 CREATE TABLE `bc_post_rule` (
   `id_post_rule` int(11) NOT NULL,
-
-  `name` varchar(40) NOT NULL COMMENT '名称',
-  `range` varchar(255) DEFAULT NULL COMMENT '送货范围',
-
   `id_warehouse` int(11) NOT NULL COMMENT '适用的发货仓库id',
 
-  `currency` varchar(3) DEFAULT 'NZD' COMMENT '币种',
-  `unit` varchar(10) DEFAULT '克' COMMENT '重量的单位',
+  `title` varchar(255) NOT NULL COMMENT '标题',
+  `carrier` varchar(50) DEFAULT NULL COMMENT '承运商',
+
+  `currency` varchar(3) DEFAULT 'NZD' COMMENT '计价币种',
+  `unit` varchar(10) DEFAULT '克' COMMENT '计价的重量单位',
 
   `rule` text COMMENT '运价规则，json格式',
 
@@ -92,7 +91,7 @@ CREATE TABLE `bc_post_rule` (
 
 **示例2：新西兰，奥克兰市内**
 
-* 每25kg 5纽币
+* 每25kg，5纽币
 
 ```json
 [
@@ -109,7 +108,7 @@ CREATE TABLE `bc_post_rule` (
 
 **示例3：新西兰直邮，富腾达，国内主区**
 
-* 每公斤 3.99纽币
+* 首重1公斤，3.99纽币；续重1公斤，4纽币
 
 ```json
 [
@@ -119,7 +118,7 @@ CREATE TABLE `bc_post_rule` (
     "init": 1000,
     "init_price": 3.99,
     "step": 1000,
-    "step_price": 3.99
+    "step_price": 4
   }
 ]
 ```
