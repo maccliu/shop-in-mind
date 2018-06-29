@@ -51,11 +51,6 @@ CREATE TABLE `bc_price_pool` (
 TRUNCATE TABLE `bc_price_pool`;
 
 
-/**
- * 从ECSHOP的数据库导入SPU的价格
- */
-
-
 /*
   只删除 ECSHOP 导入的商品价格（id<20000,且价格级别为10，20，30的记录）
 */
@@ -107,7 +102,7 @@ ON DUPLICATE KEY UPDATE
 
 /*
   导入 cn_goods_ex 的新西兰仓价格
-  币种为NZD或者RMB
+  注意：bc_goods_ex表中的币种字段不正确，不管currency字段是NZD还是RMB，都应为NZD。
 */
 INSERT INTO
   `bc_price_pool`
@@ -125,7 +120,7 @@ INSERT INTO
     `cn_goods_ex`.`goods_id`,
     `cn_user_rank`.`rank_id`,
     20 AS `price_level`,
-    `cn_goods_ex`.`currency`,
+    "NZD",
     round(`cn_goods_ex`.`price` * `cn_user_rank`.`discount` / 100.0, 2) AS `price`,
     `cn_goods`.`is_shipping`,
     from_unixtime(`cn_goods`.`last_update`) AS `updated_at`
@@ -153,7 +148,7 @@ ON DUPLICATE KEY UPDATE
 
 /*
   导入 cn_goods_ex 的国内仓价格
-  币种为NZD或者RMB
+  注意：bc_goods_ex表中的币种字段不正确，不管currency字段是NZD还是RMB，都应为NZD。
   注意：id_spu是(goods_id + 10000)
 */
 INSERT INTO
@@ -172,7 +167,7 @@ INSERT INTO
     (`cn_goods_ex`.`goods_id` + 10000),
     `cn_user_rank`.`rank_id`,
     20 AS `price_level`,
-    `cn_goods_ex`.`currency`,
+    "NZD",
     round(`cn_goods_ex`.`price` * `cn_user_rank`.`discount` / 100.0, 2) AS `price`,
     `cn_goods`.`is_shipping`,
     from_unixtime(`cn_goods`.`last_update`) AS `updated_at`
