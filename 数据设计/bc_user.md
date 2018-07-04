@@ -17,6 +17,7 @@ CREATE TABLE `bc_user` (
 
   `avatar` varchar(255) DEFAULT NULL COMMENT '头像',
   `gender` tinyint(1) DEFAULT '0' COMMENT '性别 0-未填 1-男 2-女',
+  `birthday` date DEFAULT NULL COMMENT '生日',
 
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
