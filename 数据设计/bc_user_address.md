@@ -11,11 +11,11 @@
 DROP TABLE IF EXISTS `bc_user_address`;
 
 CREATE TABLE `bc_user_address` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_address` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL COMMENT '客户id',
 
-  `is_from` tinyint(1) DEFAULT '0' COMMENT '发件地址',
-  `is_to` tinyint(1) DEFAULT '0' COMMENT '收件地址',
+  `is_from` tinyint(1) DEFAULT '0' COMMENT '作为发件地址',
+  `is_to` tinyint(1) DEFAULT '0' COMMENT '作为收件地址',
 
   `name` varchar(64) DEFAULT NULL COMMENT '联系人姓名',
   `tel` varchar(32) DEFAULT NULL COMMENT '电话',
