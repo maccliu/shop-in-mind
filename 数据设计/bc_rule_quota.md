@@ -1,0 +1,31 @@
+# bc_rule_quota 基本表
+
+商品限购规则。
+
+## SQL定义
+
+```sql
+
+DROP TABLE IF EXISTS `bc_rule_quota`;
+
+CREATE TABLE `bc_rule_quota` (
+  `id_quota` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+
+  `id_spu` int(11) NOT NULL COMMENT '商品id',
+  `min` int(11) NOT NULL DEFAULT '1' COMMENT '最小购买数量',
+  `max` int(11) NOT NULL COMMENT '最大购买数量',
+
+  `start_at` datetime NOT NULL DEFAULT '2000-01-01 00:00:00' COMMENT '开始时间',
+  `end_at` datetime NOT NULL DEFAULT '2100-01-01 00:00:00' COMMENT '结束时间',
+
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+
+  PRIMARY KEY (`id_quota`),
+  KEY `start_at` (`start_at`),
+  KEY `end_at` (`end_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品限购规则';
+
+```
+
+> 备注:
+> 1. 商品限购是指对每张订单里面的某个商品的数量限制。
