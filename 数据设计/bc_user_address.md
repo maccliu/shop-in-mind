@@ -14,8 +14,8 @@ CREATE TABLE `bc_user_address` (
   `id_address` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL COMMENT '客户id',
 
-  `is_from` tinyint(1) DEFAULT '0' COMMENT '作为发件地址',
-  `is_to` tinyint(1) DEFAULT '0' COMMENT '作为收件地址',
+  `is_from` tinyint(1) DEFAULT '0' COMMENT '发货地址',
+  `is_to` tinyint(1) DEFAULT '0' COMMENT '收货地址',
 
   `name` varchar(64) DEFAULT NULL COMMENT '联系人姓名',
   `tel` varchar(32) DEFAULT NULL COMMENT '电话',
@@ -31,6 +31,9 @@ CREATE TABLE `bc_user_address` (
   `postcode` varchar(12) DEFAULT NULL COMMENT '邮编',
 
   `disp_order` float DEFAULT '9999' COMMENT '显示序号',
+
+  `last_time_from` datetime DEFAULT NULL COMMENT '最近使用时间,发件',
+  `last_time_to` datetime DEFAULT NULL COMMENT '最近使用时间,收件',
 
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
