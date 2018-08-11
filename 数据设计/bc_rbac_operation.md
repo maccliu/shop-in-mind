@@ -14,8 +14,8 @@ CREATE TABLE `bc_rbac_operation` (
   `description` text,
 
   /* 对应的代码入口 */
-  `class_name` varchar(128) DEFAULT NULL COMMENT '类名',
-  `method_name` varchar(128) DEFAULT NULL COMMENT '方法名',
+  `controller` varchar(128) DEFAULT NULL COMMENT '控制器',
+  `action` varchar(128) DEFAULT NULL COMMENT '方法名',
 
   /* 数据审计 */
   `created_at` datetime DEFAULT NULL COMMENT '创建时间',
