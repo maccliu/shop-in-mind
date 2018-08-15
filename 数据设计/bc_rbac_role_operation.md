@@ -13,7 +13,7 @@ CREATE TABLE `bc_rbac_role_operation` (
   `id_operation` int(11) NOT NULL COMMENT '操作id',
 
   /* 数据审计 */
-  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
   PRIMARY KEY (`id_role`, `id_operation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色操作关联表';

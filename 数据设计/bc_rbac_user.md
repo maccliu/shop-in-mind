@@ -15,7 +15,7 @@ CREATE TABLE `bc_rbac_user` (
   `description` text,
 
   /* 数据审计 */
-  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
   PRIMARY KEY (`id_user`)
