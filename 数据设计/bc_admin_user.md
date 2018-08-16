@@ -1,6 +1,6 @@
 # bc_admin_user 基本表
 
-管理用户。
+admin用户。
 
 ## SQL定义
 
@@ -10,16 +10,19 @@ DROP TABLE IF EXISTS `bc_admin_user`;
 
 CREATE TABLE `bc_admin_user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
-  `name` varchar(64) NOT NULL COMMENT '姓名',
+  `user_name` varchar(64) NOT NULL COMMENT '用户姓名',
   `account` varchar(32) NOT NULL COMMENT '登录账号',
   `pwdhash` varchar(64) NOT NULL COMMENT '密码hash',
   `salt` varchar(16) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态',
-  `notes` text,
+  `notes` text COMMENT '备注',
+
+  /* 数据审计 */
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理用户';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='admin用户';
 
 ```
 
