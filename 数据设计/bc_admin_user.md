@@ -25,7 +25,9 @@ CREATE TABLE `bc_admin_user` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_user`)
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `account` (`account`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='admin用户';
 
 ```
