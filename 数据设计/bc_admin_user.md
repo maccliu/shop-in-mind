@@ -11,9 +11,11 @@ DROP TABLE IF EXISTS `bc_admin_user`;
 CREATE TABLE `bc_admin_user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `user_name` varchar(64) NOT NULL COMMENT '用户姓名',
+
   `account` varchar(32) NOT NULL COMMENT '登录账号',
+  `salt` varchar(16) NOT NULL COMMENT 'salt',
   `pwdhash` varchar(64) NOT NULL COMMENT '密码hash',
-  `salt` varchar(16) NOT NULL,
+
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态',
   `notes` text COMMENT '备注',
 
