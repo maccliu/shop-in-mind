@@ -14,7 +14,7 @@ CREATE TABLE `bc_admin_user` (
 
   /* 登录 */
   `account` varchar(32) NOT NULL COMMENT '登录账号',
-  `salt` varchar(16) NOT NULL COMMENT 'salt',
+  `salt` varchar(16) NOT NULL COMMENT '混淆串',
   `pwdhash` varchar(64) NOT NULL COMMENT '密码hash',
 
   /* 杂项 */
