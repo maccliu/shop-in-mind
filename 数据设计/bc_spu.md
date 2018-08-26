@@ -23,7 +23,7 @@ CREATE TABLE `bc_spu` (
   `image` varchar(255) DEFAULT NULL COMMENT '主图',
   `thumb` varchar(255) DEFAULT NULL COMMENT '缩略图',
 
-  `id_brand` int(11) DEFAULT NULL COMMENT '品牌id',
+  `id_brand` int(11) NOT NULL DEFAULT '0' COMMENT '品牌id',
 
   `uom` varchar(20) DEFAULT NULL COMMENT '销售单位',
 
@@ -32,7 +32,9 @@ CREATE TABLE `bc_spu` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_spu`)
+  PRIMARY KEY (`id_spu`),
+  KEY `id_brand` (`id_brand`)
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品表';
 
 ```
