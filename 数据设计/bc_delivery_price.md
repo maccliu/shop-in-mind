@@ -1,16 +1,16 @@
-# bc_post_rule 基本表
+# bc_delivery_price 基本表
 
-运价规则。
+运价表。
 
 ## SQL定义
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_post_rule`;
+DROP TABLE IF EXISTS `bc_delivery_price`;
 
-CREATE TABLE `bc_post_rule` (
-  `id_post_rule` int(11) NOT NULL AUTO_INCREMENT COMMENT '物流规则id',
-  `id_post_plan` int(11) NOT NULL COMMENT '物流方案id',
+CREATE TABLE `bc_delivery_price` (
+  `id_delivery_price` int(11) NOT NULL AUTO_INCREMENT COMMENT '物流规则id',
+  `id_delivery_plan` int(11) NOT NULL COMMENT '物流方案id',
 
   `min` int(11) NOT NULL DEFAULT '0' COMMENT '最小重量',
   `max` int(11) NOT NULL DEFAULT '999999' COMMENT '最大重量',
@@ -24,9 +24,9 @@ CREATE TABLE `bc_post_rule` (
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_post_rule`),
-  KEY `id_post_plan` (`id_post_plan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='物流规则';
+  PRIMARY KEY (`id_delivery_price`),
+  KEY `id_delivery_plan` (`id_delivery_plan`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配送价格';
 ```
 
 > 备注:

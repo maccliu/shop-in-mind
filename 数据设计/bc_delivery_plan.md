@@ -1,15 +1,15 @@
-# bc_post_plan 基本表
+# bc_delivery_plan 基本表
 
-物流方案。
+配送方案。
 
 ## SQL定义
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_post_plan`;
+DROP TABLE IF EXISTS `bc_delivery_plan`;
 
-CREATE TABLE `bc_post_plan` (
-  `id_post_plan` int(11) NOT NULL,
+CREATE TABLE `bc_delivery_plan` (
+  `id_delivery_plan` int(11) NOT NULL COMMENT '配送方案id',
   `id_warehouse` int(11) NOT NULL COMMENT '适用的发货仓库id',
 
   `title` varchar(255) NOT NULL COMMENT '标题',
@@ -20,12 +20,12 @@ CREATE TABLE `bc_post_plan` (
 
   `disp_order` float DEFAULT '9999' COMMENT '显示顺序',
 
-  `description` varchar(255) DEFAULT NULL COMMENT '备注',
+  `description` varchar(255) DEFAULT NULL COMMENT '说明',
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_post_plan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='物流方案';
+  PRIMARY KEY (`id_delivery_plan`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配送方案';
 
 ```
 
