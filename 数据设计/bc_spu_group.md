@@ -8,7 +8,7 @@
 DROP TABLE IF EXISTS `bc_spu_group`;
 
 CREATE TABLE `bc_spu_group` (
-  `id_group` int(11) NOT NULL AUTO_INCREMENT,
+  `id_spu_group` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(60) DEFAULT NULL,
 
   `title` varchar(255) DEFAULT NULL COMMENT '标题',
@@ -29,7 +29,7 @@ CREATE TABLE `bc_spu_group` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_group`),
+  PRIMARY KEY (`id_spu_group`),
   UNIQUE KEY `code_UNIQUE` (`code`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品组';
