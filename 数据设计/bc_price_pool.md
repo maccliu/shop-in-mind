@@ -19,7 +19,7 @@ CREATE TABLE `bc_price_pool` (
   `price` decimal(12,2) NOT NULL COMMENT '价格',
   `start_at` datetime DEFAULT NULL COMMENT '价格的开始时间',
   `end_at` datetime DEFAULT NULL COMMENT '价格的截止时间',
-  `post_free` tinyint(4) NOT NULL DEFAULT '0' COMMENT '免邮 1免邮 0不免邮',
+  `post_free` tinyint(4) NOT NULL DEFAULT '0' COMMENT '包邮 1包邮 0不包邮',
   `price_tag` varchar(255) DEFAULT NULL COMMENT '价格标签',
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
