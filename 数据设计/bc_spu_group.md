@@ -9,9 +9,9 @@ DROP TABLE IF EXISTS `bc_spu_group`;
 
 CREATE TABLE `bc_spu_group` (
   `id_spu_group` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(60) DEFAULT NULL,
 
-  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `title` varchar(255) NOT NULL COMMENT '标题',
+  `code` varchar(60) DEFAULT NULL COMMENT '代码',
 
   `banner` varchar(255) DEFAULT NULL COMMENT 'banner图片的url',
   `icon` varchar(255) DEFAULT NULL COMMENT 'icon图片的url',
