@@ -15,7 +15,7 @@ CREATE TABLE `bc_cart` (
   `status` tinyint(1) NOT NULL COMMENT '购物车状态',
 
   `id_warehouse` tinyint(4) DEFAULT NULL COMMENT '发货仓库id',
-  `id_delivery_way` tinyint(4) DEFAULT NULL COMMENT '送货方式id',
+  `id_delivery_plan` tinyint(4) DEFAULT NULL COMMENT '配送方式id',
 
   `currency` char(3) DEFAULT NULL COMMENT '结算币种',
 
@@ -51,4 +51,5 @@ CREATE TABLE `bc_cart` (
 ```
 
 > 备注：
-> 1. `status` 购物车状态：0-正常 9-完成
+> 1. `status` 购物车状态：0-正在使用 1-已作废 9-已生成订单。
+> 2. 一个用户最多只准有1个状态为0(正在使用)的购物车。
