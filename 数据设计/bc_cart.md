@@ -17,7 +17,7 @@ CREATE TABLE `bc_cart` (
   `id_warehouse` tinyint(4) DEFAULT NULL COMMENT '发货仓库id',
   `id_delivery_plan` tinyint(4) DEFAULT NULL COMMENT '配送方式id',
 
-  `currency` char(3) DEFAULT NULL COMMENT '结算币种',
+  `currency` char(3) DEFAULT 'NZD' COMMENT '结算币种',
 
   `to_name` varchar(40) DEFAULT NULL COMMENT '收件人姓名',
   `to_company` varchar(50) DEFAULT NULL COMMENT '收件人公司',
