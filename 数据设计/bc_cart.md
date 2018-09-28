@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS `bc_cart`;
 
 CREATE TABLE `bc_cart` (
   `id_cart` int(11) NOT NULL AUTO_INCREMENT COMMENT '购物车id',
-  `id_session` int(11) NOT NULL COMMENT 'session',
+  `id_session` int(11) NOT NULL COMMENT '会话id',
   `id_user` int(11) DEFAULT NULL COMMENT '客户id',
 
   `status` tinyint(1) NOT NULL COMMENT '购物车状态',
@@ -39,7 +39,7 @@ CREATE TABLE `bc_cart` (
   `with_photo` tinyint(1) DEFAULT '0' COMMENT '需要拍照',
   `with_sheet` tinyint(1) DEFAULT '0' COMMENT '需要面单',
 
-  `id_referer` int(11) DEFAULT NULL COMMENT '推荐人id',
+  `id_referer` int(11) DEFAULT NULL COMMENT '本次购物的推荐人id',
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
@@ -53,3 +53,4 @@ CREATE TABLE `bc_cart` (
 > 备注：
 > 1. `status` 购物车状态：0-正在使用 1-已作废 9-已生成订单。
 > 2. 一个用户最多只准有1个状态为0(正在使用)的购物车。
+> 3. id_referer是用于社会化营销场景的。如果本次购物是由某个推荐人推荐的，可以记录下来推荐人，用于给推荐人做推荐佣金。
