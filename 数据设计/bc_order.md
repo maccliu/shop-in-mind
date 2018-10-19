@@ -36,7 +36,7 @@ CREATE TABLE `bc_order` (
   `to_name` varchar(40) DEFAULT NULL COMMENT '收件人姓名',
   `to_tel` varchar(30) DEFAULT NULL COMMENT '收件人电话',
   `to_company` varchar(50) DEFAULT NULL COMMENT '收件人公司',
-  `to_idcard` varchar(32) DEFAULT NULL COMMENT '收件人身份证号',
+  `to_idnumber` varchar(32) DEFAULT NULL COMMENT '收件人身份证号',
   `to_nation` varchar(64) DEFAULT NULL COMMENT '国家/行政区',
   `to_province` varchar(64) DEFAULT NULL COMMENT '省/州',
   `to_city` varchar(64) DEFAULT NULL COMMENT '城市',
