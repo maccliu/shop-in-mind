@@ -22,7 +22,7 @@ SELECT
   `bc_cart`.`to_name`,
   `bc_cart`.`to_company`,
   `bc_cart`.`to_tel`,
-  `bc_cart`.`to_idcard`,
+  `bc_cart`.`to_idnumber`,
 
   `bc_cart`.`to_nation`,
   `bc_cart`.`to_province`,
