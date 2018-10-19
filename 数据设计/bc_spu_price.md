@@ -1,4 +1,4 @@
-# bc_price_pool 基本表
+# bc_spu_price 基本表
 
 商品价格池。
 
@@ -6,9 +6,9 @@
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_price_pool`;
+DROP TABLE IF EXISTS `bc_spu_price`;
 
-CREATE TABLE `bc_price_pool` (
+CREATE TABLE `bc_spu_price` (
   `id_price` int(11) NOT NULL AUTO_INCREMENT,
   `id_spu` int(11) NOT NULL COMMENT '商品SPU#',
 
@@ -19,7 +19,7 @@ CREATE TABLE `bc_price_pool` (
   `price` decimal(12,2) NOT NULL COMMENT '价格',
   `start_at` datetime DEFAULT NULL COMMENT '价格的开始时间',
   `end_at` datetime DEFAULT NULL COMMENT '价格的截止时间',
-  `post_free` tinyint(4) NOT NULL DEFAULT '0' COMMENT '包邮 1包邮 0不包邮',
+  `post_free` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否包邮 1包邮 0不包邮',
   `price_tag` varchar(255) DEFAULT NULL COMMENT '价格标签',
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -48,14 +48,14 @@ CREATE TABLE `bc_price_pool` (
   清空价格表，根据需要看是不是重置整个价格池
   如果员工已经设置了一些商品的价格，则不要用这条语句。
 */
-TRUNCATE TABLE `bc_price_pool`;
+TRUNCATE TABLE `bc_spu_price`;
 
 
 /*
   只删除 ECSHOP 导入的商品价格（id<20000,且价格级别为10，20，30的记录）
 */
 DELETE FROM
-  `bc_price_pool`
+  `bc_spu_price`
 WHERE
   `id_spu` < 20000
   AND `price_level` IN (10, 20, 30)
@@ -67,7 +67,7 @@ WHERE
   币种为NZD
 */
 INSERT INTO
-  `bc_price_pool`
+  `bc_spu_price`
     (
     `id_spu`,
     `user_rank`,
@@ -105,7 +105,7 @@ ON DUPLICATE KEY UPDATE
   注意：bc_goods_ex表中的币种字段不正确，不管currency字段是NZD还是RMB，都应为NZD。
 */
 INSERT INTO
-  `bc_price_pool`
+  `bc_spu_price`
     (
     `id_spu`,
     `user_rank`,
@@ -152,7 +152,7 @@ ON DUPLICATE KEY UPDATE
   注意：id_spu是(goods_id + 10000)
 */
 INSERT INTO
-  `bc_price_pool`
+  `bc_spu_price`
     (
     `id_spu`,
     `user_rank`,
@@ -199,7 +199,7 @@ ON DUPLICATE KEY UPDATE
   币种为NZD
 */
 INSERT INTO
-  `bc_price_pool`
+  `bc_spu_price`
     (
     `id_spu`,
     `user_rank`,
