@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `bc_order`;
 
 CREATE TABLE `bc_order` (
   /* 订单标识 */
-  `id_order` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单id',
+  `id_order` varchar(18) NOT NULL COMMENT '订单id',
   `order_ref` varchar(32) DEFAULT NULL COMMENT '订单参考号',
 
   /* 订单来源 */

@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS `bc_order_payment`;
 CREATE TABLE `bc_order_payment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
 
-  `id_order` int(11) NOT NULL COMMENT '订单id',
+  `id_order` varchar(18) NOT NULL COMMENT '订单id',
   `order_ref` varchar(32) DEFAULT NULL COMMENT '订单参考号',
 
   `id_user` int(11) NOT NULL COMMENT '用户id',

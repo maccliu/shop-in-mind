@@ -9,7 +9,7 @@
 DROP TABLE IF EXISTS `bc_order_status`;
 
 CREATE TABLE `bc_order_status` (
-  `id_order` int(11) NOT NULL COMMENT '订单id',
+  `id_order` varchar(18) NOT NULL COMMENT '订单id',
 
   /* 整体状态 */
   `status` tinyint(4) DEFAULT '1' COMMENT '订单状态',

@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `bc_order_adjustment`;
 
 CREATE TABLE `bc_order_adjustment` (
   `id_adjustment` int(11) NOT NULL AUTO_INCREMENT,
-  `id_order` int(11) NOT NULL COMMENT '订单id',
+  `id_order` varchar(18) NOT NULL COMMENT '订单id',
 
   `currency` char(3) NOT NULL DEFAULT 'NZD' COMMENT '币种',
   `amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '调价金额 以基准货币计',

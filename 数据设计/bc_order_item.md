@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `bc_order_item`;
 
 CREATE TABLE `bc_order_item` (
   `id_order_item` int(11) NOT NULL AUTO_INCREMENT,
-  `id_order` int(11) NOT NULL COMMENT '订单id',
+  `id_order` varchar(18) NOT NULL COMMENT '订单id',
 
   `id_spu` int(11) NOT NULL COMMENT '商品id',
   `title` varchar(255) NOT NULL COMMENT '商品名称',
