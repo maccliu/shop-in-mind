@@ -11,8 +11,8 @@
 DROP TABLE IF EXISTS `bc_user_address`;
 
 CREATE TABLE `bc_user_address` (
-  `id_address` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) NOT NULL COMMENT '客户id',
+  `address_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '客户id',
 
   `is_from` tinyint(1) DEFAULT '0' COMMENT '发货地址',
   `is_to` tinyint(1) DEFAULT '0' COMMENT '收货地址',
@@ -39,7 +39,7 @@ CREATE TABLE `bc_user_address` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
   PRIMARY KEY (`id`),
-  KEY `id_user` (`id_user`),
+  KEY `user_id` (`user_id`),
   KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

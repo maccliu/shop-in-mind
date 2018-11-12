@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `bc_order`;
 
 CREATE TABLE `bc_order` (
   /* 订单标识 */
-  `id_order` varchar(18) NOT NULL COMMENT '订单id',
+  `order_id` varchar(18) NOT NULL COMMENT '订单id',
   `order_ref` varchar(32) DEFAULT NULL COMMENT '订单参考号',
 
   /* 订单来源 */
@@ -19,7 +19,7 @@ CREATE TABLE `bc_order` (
   `channel_order_ref` varchar(32) DEFAULT NULL COMMENT '渠道的订单参考号',
 
   /* 用户信息 */
-  `id_user` int(11) NOT NULL COMMENT '客户id',
+  `user_id` int(11) NOT NULL COMMENT '客户id',
   `user_name` int(11) NOT NULL COMMENT '客户名',
   `user_rank` int(11) NOT NULL COMMENT '客户级别',
   `rank_discount` decimal(6,2) NOT NULL COMMENT '用户级别折扣率',
@@ -27,8 +27,8 @@ CREATE TABLE `bc_order` (
   `user_email` varchar(60) DEFAULT NULL COMMENT '用户email',
 
   /* 物流信息 */
-  `id_warehouse` tinyint(4) NOT NULL COMMENT '发货仓库id',
-  `id_delivery_way` tinyint(4) NOT NULL COMMENT '送货方式id',
+  `warehouse_id` tinyint(4) NOT NULL COMMENT '发货仓库id',
+  `delivery_way_id` tinyint(4) NOT NULL COMMENT '送货方式id',
   `delivery_vendor` varchar(40) DEFAULT NULL COMMENT '快递公司名',
   `delivery_range` varchar(40) DEFAULT NULL COMMENT '送货区域',
 
@@ -78,16 +78,16 @@ CREATE TABLE `bc_order` (
   `order_total_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单总金额 以基准币种计',
 
   /* 营销 */
-  `id_referer` int(11) DEFAULT NULL COMMENT '订单推荐人id',
+  `referer_id` int(11) DEFAULT NULL COMMENT '订单推荐人id',
 
   /* 数据审计 */
   `created_at` datetime DEFAULT NULL COMMENT '订单的创建时间',
   `closed_at` datetime DEFAULT NULL COMMENT '订单关闭时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_order`),
+  PRIMARY KEY (`order_id`),
   UNIQUE KEY `order_ref` (`order_ref`),
-  KEY `id_user` (`id_user`)
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单';
 
 ```

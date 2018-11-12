@@ -9,10 +9,10 @@
 DROP TABLE IF EXISTS `bc_category_tree`;
 
 CREATE TABLE `bc_category_tree` (
-    `id_category` INT(11) NOT NULL,
+    `category_id` INT(11) NOT NULL,
     `nodes` TEXT,
 
-    PRIMARY KEY (`id_category`)
+    PRIMARY KEY (`category_id`)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 ```

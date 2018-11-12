@@ -2,13 +2,13 @@
 
 ```sql
 INSERT INTO
-    `bc_user` (`id_user`, `nickname`, `user_rank`)
+    `bc_user` (`user_id`, `nickname`, `user_rank`)
 SELECT
     CASE
-        WHEN MAX(`id_user`) IS NULL
+        WHEN MAX(`user_id`) IS NULL
         THEN 1
-        ELSE MAX(`id_user`) + 1
-    END AS `new_id_user`,
+        ELSE MAX(`user_id`) + 1
+    END AS `new_user_id`,
     "张三",
     6
 FROM

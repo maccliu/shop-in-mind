@@ -1,4 +1,4 @@
-# bc_spu_price 基本表
+# bc_stu_price 基本表
 
 商品价格池。
 
@@ -6,11 +6,11 @@
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_spu_price`;
+DROP TABLE IF EXISTS `bc_stu_price`;
 
-CREATE TABLE `bc_spu_price` (
-  `id_price` int(11) NOT NULL AUTO_INCREMENT,
-  `id_spu` int(11) NOT NULL COMMENT '商品SPU#',
+CREATE TABLE `bc_stu_price` (
+  `price_id` int(11) NOT NULL AUTO_INCREMENT,
+  `stu_id` int(11) NOT NULL COMMENT '商品SPU#',
 
   `user_rank` tinyint(4) NOT NULL DEFAULT '0' COMMENT '适用的用户级别(0为适用所有级别)',
 
@@ -25,16 +25,16 @@ CREATE TABLE `bc_spu_price` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `updated_by` int(11) DEFAULT NULL COMMENT '更新人',
 
-  PRIMARY KEY (`id_price`),
-  UNIQUE KEY `uni_key` (`id_spu`,`user_rank`,`price_level`,`currency`,`price`,`start_at`,`end_at`,`post_free`),
-  KEY `id_spu` (`id_spu`),
+  PRIMARY KEY (`price_id`),
+  UNIQUE KEY `uni_key` (`stu_id`,`user_rank`,`price_level`,`currency`,`price`,`start_at`,`end_at`,`post_free`),
+  KEY `stu_id` (`stu_id`),
   KEY `user_rank` (`user_rank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品价格表';
 
 ```
 
 > 备注:
-> 1. 价格根据 `price_level` 进行了分层，高层价格会覆盖底层价格。满足(id_spu, user_rank, time) 条件的最高`price_level`的价格即为实际价格。
+> 1. 价格根据 `price_level` 进行了分层，高层价格会覆盖底层价格。满足(stu_id, user_rank, time) 条件的最高`price_level`的价格即为实际价格。
 > 2. 原则上，同一个商品，高层价格<=底层价格，不然容易被客户质疑“怎么促销价/活动价还比日常价高”。但是考虑到定价属于商家经营策略范畴，有很大主观性，除非商家本身要求，否则程序不应该介入。所以，程序不会强制使用较低价格作为实际价格。
 > 3. `price_tag` 可以设置价格标签，比如说“店庆”，“情人节特价”等。
 > 4. 价格的所有字段都会在订单商品表中会被标记出来。
@@ -48,16 +48,16 @@ CREATE TABLE `bc_spu_price` (
   清空价格表，根据需要看是不是重置整个价格池
   如果员工已经设置了一些商品的价格，则不要用这条语句。
 */
-TRUNCATE TABLE `bc_spu_price`;
+TRUNCATE TABLE `bc_stu_price`;
 
 
 /*
   只删除 ECSHOP 导入的商品价格（id<20000,且价格级别为10，20，30的记录）
 */
 DELETE FROM
-  `bc_spu_price`
+  `bc_stu_price`
 WHERE
-  `id_spu` < 20000
+  `stu_id` < 20000
   AND `price_level` IN (10, 20, 30)
 ;
 
@@ -67,9 +67,9 @@ WHERE
   币种为NZD
 */
 INSERT INTO
-  `bc_spu_price`
+  `bc_stu_price`
     (
-    `id_spu`,
+    `stu_id`,
     `user_rank`,
     `price_level`,
     `currency`,
@@ -96,7 +96,7 @@ INSERT INTO
     `cn_user_rank`.`rank_id`
 
 ON DUPLICATE KEY UPDATE
-  `id_spu` = `id_spu`
+  `stu_id` = `stu_id`
 ;
 
 
@@ -105,9 +105,9 @@ ON DUPLICATE KEY UPDATE
   注意：bc_goods_ex表中的币种字段不正确，不管currency字段是NZD还是RMB，都应为NZD。
 */
 INSERT INTO
-  `bc_spu_price`
+  `bc_stu_price`
     (
-    `id_spu`,
+    `stu_id`,
     `user_rank`,
     `price_level`,
     `currency`,
@@ -142,19 +142,19 @@ INSERT INTO
     `cn_user_rank`.`rank_id`
 
 ON DUPLICATE KEY UPDATE
-  `id_spu` = `id_spu`
+  `stu_id` = `stu_id`
 ;
 
 
 /*
   导入 cn_goods_ex 的国内仓价格
   注意：bc_goods_ex表中的币种字段不正确，不管currency字段是NZD还是RMB，都应为NZD。
-  注意：id_spu是(goods_id + 10000)
+  注意：stu_id是(goods_id + 10000)
 */
 INSERT INTO
-  `bc_spu_price`
+  `bc_stu_price`
     (
-    `id_spu`,
+    `stu_id`,
     `user_rank`,
     `price_level`,
     `currency`,
@@ -189,7 +189,7 @@ INSERT INTO
     `cn_user_rank`.`rank_id`
 
 ON DUPLICATE KEY UPDATE
-  `id_spu` = `id_spu`
+  `stu_id` = `stu_id`
 ;
 
 
@@ -199,9 +199,9 @@ ON DUPLICATE KEY UPDATE
   币种为NZD
 */
 INSERT INTO
-  `bc_spu_price`
+  `bc_stu_price`
     (
-    `id_spu`,
+    `stu_id`,
     `user_rank`,
     `price_level`,
     `currency`,
@@ -252,7 +252,7 @@ INSERT INTO
     `cn_goods`.`goods_id`
 
 ON DUPLICATE KEY UPDATE
-  `id_spu` = `id_spu`
+  `stu_id` = `stu_id`
 ;
 
 ```

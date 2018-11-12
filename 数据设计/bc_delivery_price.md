@@ -9,8 +9,8 @@
 DROP TABLE IF EXISTS `bc_delivery_price`;
 
 CREATE TABLE `bc_delivery_price` (
-  `id_delivery_price` int(11) NOT NULL AUTO_INCREMENT COMMENT '物流规则id',
-  `id_delivery_plan` int(11) NOT NULL COMMENT '物流方案id',
+  `delivery_price_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '物流规则id',
+  `delivery_plan_id` int(11) NOT NULL COMMENT '物流方案id',
 
   `min` int(11) NOT NULL DEFAULT '0' COMMENT '最小重量',
   `max` int(11) NOT NULL DEFAULT '999999' COMMENT '最大重量',
@@ -24,8 +24,8 @@ CREATE TABLE `bc_delivery_price` (
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_delivery_price`),
-  KEY `id_delivery_plan` (`id_delivery_plan`)
+  PRIMARY KEY (`delivery_price_id`),
+  KEY `delivery_plan_id` (`delivery_plan_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配送价格';
 ```
 

@@ -9,11 +9,11 @@
 DROP TABLE IF EXISTS `bc_sku`;
 
 CREATE TABLE `bc_sku` (
-  `id_sku` INT(11) NOT NULL,
+  `sku_id` INT(11) NOT NULL,
   `sku_code` VARCHAR(40) DEFAULT NULL COMMENT '本店货号',
 
   `sku_title` VARCHAR(255) NOT NULL COMMENT '单品标题',
-  `id_brand` INT(11) DEFAULT NULL COMMENT '品牌id',
+  `brand_id` INT(11) DEFAULT NULL COMMENT '品牌id',
 
   `uom` VARCHAR(20) DEFAULT NULL COMMENT '销售单位',
 
@@ -36,9 +36,9 @@ CREATE TABLE `bc_sku` (
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_sku`),
+  PRIMARY KEY (`sku_id`),
   UNIQUE KEY `sku_code` (`sku_code`),
-  KEY `id_brand` (`id_brand`),
+  KEY `brand_id` (`brand_id`),
   KEY `qrcode` (`qrcode`),
   KEY `barcode` (`barcode`),
   KEY `sku_title` (`sku_title`)
@@ -47,4 +47,4 @@ CREATE TABLE `bc_sku` (
 ```
 
 > 备注
-> 1. `sku`是作为库存、配货、发货的基本单位，不是销售的基本单位。`spu`才是作为销售基本单位。
+> 1. `sku`是作为库存、配货、发货的基本单位，不是销售的基本单位。`stu`才是作为销售基本单位。

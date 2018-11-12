@@ -9,8 +9,8 @@
 DROP TABLE IF EXISTS `bc_delivery_plan`;
 
 CREATE TABLE `bc_delivery_plan` (
-  `id_delivery_plan` int(11) NOT NULL COMMENT '配送方案id',
-  `id_warehouse` int(11) NOT NULL COMMENT '适用的发货仓库id',
+  `delivery_plan_id` int(11) NOT NULL COMMENT '配送方案id',
+  `warehouse_id` int(11) NOT NULL COMMENT '适用的发货仓库id',
 
   `title` varchar(255) NOT NULL COMMENT '标题',
   `carrier` varchar(50) DEFAULT NULL COMMENT '承运商',
@@ -24,7 +24,7 @@ CREATE TABLE `bc_delivery_plan` (
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_delivery_plan`)
+  PRIMARY KEY (`delivery_plan_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配送方案';
 
 ```

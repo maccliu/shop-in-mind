@@ -1,16 +1,16 @@
-# bc_spu 基本表
+# bc_stu 基本表
 
 商品主表。
 
 ## SQL定义
 
 ```sql
-DROP TABLE IF EXISTS `bc_spu`;
+DROP TABLE IF EXISTS `bc_stu`;
 
-CREATE TABLE `bc_spu` (
-  `id_spu` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bc_stu` (
+  `stu_id` int(11) NOT NULL AUTO_INCREMENT,
 
-  `id_warehouse` tinyint(4) NOT NULL COMMENT '发货仓id',
+  `warehouse_id` tinyint(4) NOT NULL COMMENT '发货仓id',
 
   `title` varchar(255) NOT NULL COMMENT '商品标题',
 
@@ -23,7 +23,7 @@ CREATE TABLE `bc_spu` (
   `image` varchar(255) DEFAULT NULL COMMENT '主图',
   `thumb` varchar(255) DEFAULT NULL COMMENT '缩略图',
 
-  `id_brand` int(11) NOT NULL DEFAULT '0' COMMENT '品牌id',
+  `brand_id` int(11) NOT NULL DEFAULT '0' COMMENT '品牌id',
 
   `uom` varchar(20) DEFAULT NULL COMMENT '销售单位',
 
@@ -32,16 +32,16 @@ CREATE TABLE `bc_spu` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_spu`),
-  KEY `id_brand` (`id_brand`)
+  PRIMARY KEY (`stu_id`),
+  KEY `brand_id` (`brand_id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品表';
 
 ```
 
 > 备注
-> 1. 为考虑尽可能兼容原系统中的商品数据，所以本表中的`id_spu`**没有设计成自增**，必须明确指定。
-> 2. `id_spu`的1-9999 保留给原系统的商品新西兰仓使用，10000-19999 保留给原系统商品的国内仓使用，新系统的商品用100000（6位数）id，以免和原系统商品冲突。
+> 1. 为考虑尽可能兼容原系统中的商品数据，所以本表中的`stu_id`**没有设计成自增**，必须明确指定。
+> 2. `stu_id`的1-9999 保留给原系统的商品新西兰仓使用，10000-19999 保留给原系统商品的国内仓使用，新系统的商品用100000（6位数）id，以免和原系统商品冲突。
 > 3. 为确保数据一致性，1-9999 和 10001-19999 是严格的一一对应关系。
 
 
@@ -51,17 +51,17 @@ CREATE TABLE `bc_spu` (
 
 /* 删除旧数据 */
 DELETE FROM
-  `bc_spu`
+  `bc_stu`
 WHERE
-  `id_spu` BETWEEN 1 AND 19999;
+  `stu_id` BETWEEN 1 AND 19999;
 
 
 /* 商品，新西兰直邮仓 */
 INSERT INTO
-  `bc_spu`
+  `bc_stu`
     (
-    `id_spu`,
-    `id_warehouse`,
+    `stu_id`,
+    `warehouse_id`,
     `title`,
     `weight`,
     `weight_unit`,
@@ -69,7 +69,7 @@ INSERT INTO
     `deleted`,
     `image`,
     `thumb`,
-    `id_brand`,
+    `brand_id`,
     `created_at`,
     `updated_at`
     )
@@ -94,10 +94,10 @@ INSERT INTO
 
 /* 商品，国内仓 */
 INSERT INTO
-  `bc_spu`
+  `bc_stu`
     (
-    `id_spu`,
-    `id_warehouse`,
+    `stu_id`,
+    `warehouse_id`,
     `title`,
     `weight`,
     `weight_unit`,
@@ -105,7 +105,7 @@ INSERT INTO
     `deleted`,
     `image`,
     `thumb`,
-    `id_brand`,
+    `brand_id`,
     `created_at`,
     `updated_at`
     )

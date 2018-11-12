@@ -22,8 +22,8 @@
 
 | 表 | 说明
 |----|----
-| [bc_spu](bc_spu.md) | 商品主表
-| [bc_spu_detail](bc_spu_detail.md) | 商品详情
+| [bc_stu](bc_stu.md) | 商品主表
+| [bc_stu_detail](bc_stu_detail.md) | 商品详情
 
 ## 价格
 

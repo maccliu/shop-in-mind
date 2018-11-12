@@ -9,7 +9,7 @@
 DROP TABLE IF EXISTS `bc_delivery_zone`;
 
 CREATE TABLE `bc_delivery_zone` (
-  `id_delivery_zone` int(11) NOT NULL,
+  `delivery_zone_id` int(11) NOT NULL,
 
   `country` varchar(2) NOT NULL DEFAULT 'CN' COMMENT '国家代码',
   `zone_name` varchar(100) NOT NULL COMMENT '区域名称',
@@ -19,6 +19,6 @@ CREATE TABLE `bc_delivery_zone` (
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_delivery_zone`)
+  PRIMARY KEY (`delivery_zone_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配送区域';
 ```

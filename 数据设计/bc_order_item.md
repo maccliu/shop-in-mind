@@ -9,10 +9,10 @@
 DROP TABLE IF EXISTS `bc_order_item`;
 
 CREATE TABLE `bc_order_item` (
-  `id_order_item` int(11) NOT NULL AUTO_INCREMENT,
-  `id_order` varchar(18) NOT NULL COMMENT '订单id',
+  `order_item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` varchar(18) NOT NULL COMMENT '订单id',
 
-  `id_spu` int(11) NOT NULL COMMENT '商品id',
+  `stu_id` int(11) NOT NULL COMMENT '商品id',
   `title` varchar(255) NOT NULL COMMENT '商品名称',
   `qty` int(11) unsigned NOT NULL COMMENT '商品数量',
 
@@ -30,15 +30,15 @@ CREATE TABLE `bc_order_item` (
 
   `status` tinyint(4) DEFAULT '0' COMMENT '状态',
 
-  `id_delivery` int(11) DEFAULT NULL COMMENT '对应的快递单id',
+  `delivery_id` int(11) DEFAULT NULL COMMENT '对应的快递单id',
 
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_order_item`),
-  KEY `id_order` (`id_order`),
-  KEY `id_spu` (`id_spu`),
-  KEY `id_delivery` (`id_delivery`)
+  PRIMARY KEY (`order_item_id`),
+  KEY `order_id` (`order_id`),
+  KEY `stu_id` (`stu_id`),
+  KEY `delivery_id` (`delivery_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单商品';
 
 ```

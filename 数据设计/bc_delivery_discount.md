@@ -9,8 +9,8 @@
 DROP TABLE IF EXISTS `bc_delivery_discount`;
 
 CREATE TABLE `bc_delivery_discount` (
-  `id_delivery_discount` int(11) NOT NULL COMMENT '运费折扣id',
-  `id_delivery_plan` int(11) NOT NULL COMMENT '配送方案id',
+  `delivery_discount_id` int(11) NOT NULL COMMENT '运费折扣id',
+  `delivery_plan_id` int(11) NOT NULL COMMENT '配送方案id',
 
   `start_at` date NOT NULL DEFAULT '2000-01-01' COMMENT '开始时间',
   `end_at` date NOT NULL DEFAULT '2099-12-31' COMMENT '结束时间',
@@ -25,8 +25,8 @@ CREATE TABLE `bc_delivery_discount` (
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_delivery_discount`),
-  KEY `id_delivery_plan` (`id_delivery_plan`)
+  PRIMARY KEY (`delivery_discount_id`),
+  KEY `delivery_plan_id` (`delivery_plan_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='运费折扣表';
 
 ```

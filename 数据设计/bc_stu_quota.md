@@ -1,4 +1,4 @@
-# bc_spu_quota 基本表
+# bc_stu_quota 基本表
 
 商品限购规则。
 
@@ -6,12 +6,12 @@
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_spu_quota`;
+DROP TABLE IF EXISTS `bc_stu_quota`;
 
-CREATE TABLE `bc_spu_quota` (
-  `id_quota` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+CREATE TABLE `bc_stu_quota` (
+  `quota_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
 
-  `id_spu` int(11) NOT NULL COMMENT '商品id',
+  `stu_id` int(11) NOT NULL COMMENT '商品id',
   `min` int(11) NOT NULL DEFAULT '1' COMMENT '最小购买数量',
   `max` int(11) NOT NULL COMMENT '最大购买数量',
 
@@ -20,7 +20,7 @@ CREATE TABLE `bc_spu_quota` (
 
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_quota`),
+  PRIMARY KEY (`quota_id`),
   KEY `start_at` (`start_at`),
   KEY `end_at` (`end_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品限购规则';

@@ -9,7 +9,7 @@ admin用户。
 DROP TABLE IF EXISTS `bc_admin_user`;
 
 CREATE TABLE `bc_admin_user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `user_name` varchar(64) NOT NULL COMMENT '用户姓名',
 
   /* 登录 */
@@ -25,7 +25,7 @@ CREATE TABLE `bc_admin_user` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-  PRIMARY KEY (`id_user`),
+  PRIMARY KEY (`user_id`),
   UNIQUE KEY `account` (`account`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='admin用户';

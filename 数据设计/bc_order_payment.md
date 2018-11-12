@@ -11,10 +11,10 @@ DROP TABLE IF EXISTS `bc_order_payment`;
 CREATE TABLE `bc_order_payment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
 
-  `id_order` varchar(18) NOT NULL COMMENT '订单id',
+  `order_id` varchar(18) NOT NULL COMMENT '订单id',
   `order_ref` varchar(32) DEFAULT NULL COMMENT '订单参考号',
 
-  `id_user` int(11) NOT NULL COMMENT '用户id',
+  `user_id` int(11) NOT NULL COMMENT '用户id',
   `user_ref` varchar(64) DEFAULT NULL COMMENT '用户参考号',
 
   `currency` varchar(3) NOT NULL COMMENT '支付币种',
@@ -32,9 +32,9 @@ CREATE TABLE `bc_order_payment` (
 
   PRIMARY KEY (`id`),
   UNIQUE KEY `payment_ref` (`payment_ref`),
-  KEY `id_order` (`id_order`),
+  KEY `order_id` (`order_id`),
   KEY `order_ref` (`order_ref`),
-  KEY `id_user` (`id_user`),
+  KEY `user_id` (`user_id`),
   KEY `user_ref` (`user_ref`),
   KEY `paid_at` (`paid_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单支付记录';

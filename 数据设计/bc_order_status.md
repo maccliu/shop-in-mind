@@ -9,7 +9,7 @@
 DROP TABLE IF EXISTS `bc_order_status`;
 
 CREATE TABLE `bc_order_status` (
-  `id_order` varchar(18) NOT NULL COMMENT '订单id',
+  `order_id` varchar(18) NOT NULL COMMENT '订单id',
 
   /* 整体状态 */
   `status` tinyint(4) DEFAULT '1' COMMENT '订单状态',
@@ -37,7 +37,7 @@ CREATE TABLE `bc_order_status` (
   `service_status` tinyint(4) DEFAULT '0' COMMENT '售后状态',
   `service_time` datetime DEFAULT NULL COMMENT '售后状态的更新时间',
 
-  PRIMARY KEY (`id_order`),
+  PRIMARY KEY (`order_id`),
   KEY `status` (`status`),
   KEY `paid_status` (`paid_status`),
   KEY `pick_status` (`pick_status`),

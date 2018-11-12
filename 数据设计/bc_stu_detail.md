@@ -1,4 +1,4 @@
-# bc_spu_detail 基本表
+# bc_stu_detail 基本表
 
 商品详情。
 
@@ -6,11 +6,11 @@
 
 ```sql
 
-DROP TABLE IF EXISTS `bc_spu_detail`;
+DROP TABLE IF EXISTS `bc_stu_detail`;
 
-CREATE TABLE `bc_spu_detail` (
+CREATE TABLE `bc_stu_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_spu` int(11) NOT NULL,
+  `stu_id` int(11) NOT NULL,
 
   `type` tinyint(4) DEFAULT '1' COMMENT '类型',
   `pic` varchar(255) DEFAULT NULL COMMENT '图片url',
@@ -20,7 +20,7 @@ CREATE TABLE `bc_spu_detail` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
   PRIMARY KEY (`id`),
-  KEY `id_spu` (`id_spu`)
+  KEY `stu_id` (`stu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品详情';
 
 ```

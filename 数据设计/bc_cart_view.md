@@ -10,13 +10,13 @@ DROP VIEW IF EXISTS `bc_cart_view`;
 
 CREATE VIEW `bc_cart_view` AS
 SELECT
-  `bc_cart`.`id_cart`,
-  `bc_cart`.`id_session`,
-  `bc_cart`.`id_user`,
+  `bc_cart`.`cart_id`,
+  `bc_cart`.`session_id`,
+  `bc_cart`.`user_id`,
   `bc_cart`.`status`,
 
-  `bc_cart`.`id_warehouse`,
-  `bc_cart`.`id_delivery_way`,
+  `bc_cart`.`warehouse_id`,
+  `bc_cart`.`delivery_way_id`,
   `bc_cart`.`currency`,
 
   `bc_cart`.`to_name`,
@@ -39,7 +39,7 @@ SELECT
   `bc_cart`.`with_photo`,
   `bc_cart`.`with_sheet`,
 
-  `bc_cart`.`id_referer`,
+  `bc_cart`.`referer_id`,
 
   `bc_warehouse`.`warehouse_name`,
 
@@ -57,11 +57,11 @@ FROM
 LEFT JOIN
   `bc_warehouse`
     ON
-      `bc_cart`.`id_warehouse` = `bc_warehouse`.`id_warehouse`
+      `bc_cart`.`warehouse_id` = `bc_warehouse`.`warehouse_id`
 LEFT JOIN
   `bc_delivery_way`
     ON
-      `bc_cart`.`id_delivery_way` = `bc_delivery_way`.`id_delivery_way`
+      `bc_cart`.`delivery_way_id` = `bc_delivery_way`.`delivery_way_id`
 ;
 
 ```

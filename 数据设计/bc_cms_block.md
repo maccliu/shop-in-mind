@@ -7,7 +7,7 @@
 DROP TABLE IF EXISTS `bc_cms_block`;
 
 CREATE TABLE `bc_cms_block` (
-  `id_block` int(11) NOT NULL,
+  `block_id` int(11) NOT NULL,
   
   `title` varchar(40) DEFAULT NULL COMMENT '标题',
   `subtitle` varchar(100) DEFAULT NULL COMMENT '副标题',
@@ -19,7 +19,7 @@ CREATE TABLE `bc_cms_block` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   
-  PRIMARY KEY (`id_block`)
+  PRIMARY KEY (`block_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='展示区块';
 
 ```

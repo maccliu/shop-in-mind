@@ -13,8 +13,8 @@ DROP VIEW IF EXISTS `bc_price_view`;
 CREATE VIEW `bc_price_view` AS
 
   SELECT DISTINCT
-    `bc_price_pool`.`id_price` AS `id_price`,
-    `bc_price_pool`.`id_spu` AS `id_spu`,
+    `bc_price_pool`.`price_id` AS `price_id`,
+    `bc_price_pool`.`stu_id` AS `stu_id`,
 
     `bc_price_pool`.`user_rank` AS `user_rank`,
 
@@ -38,7 +38,7 @@ CREATE VIEW `bc_price_view` AS
         `bc_currency_rate`.`from` = `bc_price_pool`.`currency`
         AND `bc_currency_rate`.`to` = "NZD"
   ORDER BY
-    `bc_price_pool`.`id_spu`,
+    `bc_price_pool`.`stu_id`,
     `bc_price_pool`.`price_level` DESC,
     `bc_price_pool`.`user_rank` DESC
 

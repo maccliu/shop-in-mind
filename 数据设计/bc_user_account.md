@@ -8,7 +8,7 @@
 DROP TABLE IF EXISTS `bc_user_account`;
 
 CREATE TABLE `bc_user_account` (
-  `id_user` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `user_name` varchar(32) DEFAULT NULL COMMENT '用户名',
   `mobile` varchar(16) DEFAULT NULL COMMENT '手机号',
   `mobile_confirmed_at` datetime DEFAULT NULL COMMENT '手机号的绑定时间',
@@ -22,7 +22,7 @@ CREATE TABLE `bc_user_account` (
   `wx_confirmed_at` datetime DEFAULT NULL COMMENT '微信的绑定时间',
   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '已删除',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id_user`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户的登录账户';
 
 ```
