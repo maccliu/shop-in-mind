@@ -23,7 +23,7 @@ CREATE TABLE `bc_order_item` (
   `price_type` tinyint(4) DEFAULT NULL COMMENT '价格类型：10日常价 20仓库价 30促销价 40节日价',
   `start_at` datetime DEFAULT NULL COMMENT '价格的开始时间',
   `end_at` datetime DEFAULT NULL COMMENT '价格的截止时间',
-  `post_free` tinyint(4) NOT NULL DEFAULT '0' COMMENT '包邮:1包邮 0不包邮',
+  `free_shipping` tinyint(4) NOT NULL DEFAULT '0' COMMENT '包邮:1包邮 0不包邮',
   `price_tag` varchar(40) DEFAULT NULL COMMENT '价格标签',
 
   `sale_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '销售类型',

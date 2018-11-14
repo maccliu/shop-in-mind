@@ -19,14 +19,14 @@ CREATE TABLE `bc_stu_price` (
   `price` decimal(12,2) NOT NULL COMMENT '价格',
   `start_at` datetime DEFAULT NULL COMMENT '价格的开始时间',
   `end_at` datetime DEFAULT NULL COMMENT '价格的截止时间',
-  `post_free` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否包邮 1包邮 0不包邮',
+  `free_shipping` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否包邮 1包邮 0不包邮',
   `price_tag` varchar(255) DEFAULT NULL COMMENT '价格标签',
 
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `updated_by` int(11) DEFAULT NULL COMMENT '更新人',
 
   PRIMARY KEY (`price_id`),
-  UNIQUE KEY `uni_key` (`stu_id`,`user_rank`,`price_level`,`currency`,`price`,`start_at`,`end_at`,`post_free`),
+  UNIQUE KEY `uni_key` (`stu_id`,`user_rank`,`price_level`,`currency`,`price`,`start_at`,`end_at`,`free_shipping`),
   KEY `stu_id` (`stu_id`),
   KEY `user_rank` (`user_rank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品价格表';
@@ -74,7 +74,7 @@ INSERT INTO
     `price_level`,
     `currency`,
     `price`,
-    `post_free`,
+    `free_shipping`,
     `updated_at`
     )
 
@@ -112,7 +112,7 @@ INSERT INTO
     `price_level`,
     `currency`,
     `price`,
-    `post_free`,
+    `free_shipping`,
     `updated_at`
     )
 
@@ -159,7 +159,7 @@ INSERT INTO
     `price_level`,
     `currency`,
     `price`,
-    `post_free`,
+    `free_shipping`,
     `updated_at`
     )
 
@@ -208,7 +208,7 @@ INSERT INTO
     `price`,
     `start_at`,
     `end_at`,
-    `post_free`,
+    `free_shipping`,
     `price_tag`,
     `updated_at`
     )

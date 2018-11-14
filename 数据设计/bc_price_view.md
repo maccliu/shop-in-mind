@@ -25,7 +25,7 @@ CREATE VIEW `bc_price_view` AS
 
     `bc_price_pool`.`start_at` AS `start_at`,
     `bc_price_pool`.`end_at` AS `end_at`,
-    `bc_price_pool`.`post_free` AS `post_free`,
+    `bc_price_pool`.`free_shipping` AS `free_shipping`,
     `bc_price_pool`.`price_tag` AS `price_tag`,
 
     `bc_price_pool`.`updated_at` AS `updated_at`,
