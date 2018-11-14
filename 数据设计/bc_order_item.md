@@ -26,6 +26,8 @@ CREATE TABLE `bc_order_item` (
   `free_shipping` tinyint(4) NOT NULL DEFAULT '0' COMMENT '包邮:1包邮 0不包邮',
   `price_tag` varchar(40) DEFAULT NULL COMMENT '价格标签',
 
+  `stock_id` int(11) NOT NULL COMMENT '对应的库存id',
+
   `sale_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '销售类型',
 
   `status` tinyint(4) DEFAULT '0' COMMENT '状态',
