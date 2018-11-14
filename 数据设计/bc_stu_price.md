@@ -22,6 +22,8 @@ CREATE TABLE `bc_stu_price` (
   `free_shipping` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否包邮 1包邮 0不包邮',
   `price_tag` varchar(255) DEFAULT NULL COMMENT '价格标签',
 
+  `stock_id` int(11) NOT NULL COMMENT '对应的库存id',
+
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `updated_by` int(11) DEFAULT NULL COMMENT '更新人',
 
