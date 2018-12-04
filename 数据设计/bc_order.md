@@ -22,15 +22,16 @@ CREATE TABLE `bc_order` (
   `user_id` int(11) NOT NULL COMMENT '客户id',
   `user_name` int(11) NOT NULL COMMENT '客户名',
   `user_rank` int(11) NOT NULL COMMENT '客户级别',
-  `rank_discount` decimal(6,2) NOT NULL COMMENT '用户级别折扣率',
-  `user_mobile` varchar(40) DEFAULT NULL COMMENT '用户手机',
-  `user_email` varchar(60) DEFAULT NULL COMMENT '用户email',
+  `rank_discount` decimal(6,2) NOT NULL COMMENT '客户级别折扣率',
+  `user_wxid` varchar(30) DEFAULT NULL COMMENT '客户微信号',
+  `user_mobile` varchar(40) DEFAULT NULL COMMENT '客户手机',
+  `user_email` varchar(60) DEFAULT NULL COMMENT '客户email',
 
   /* 物流信息 */
   `warehouse_id` tinyint(4) NOT NULL COMMENT '发货仓库id',
-  `delivery_way_id` tinyint(4) NOT NULL COMMENT '送货方式id',
-  `delivery_vendor` varchar(40) DEFAULT NULL COMMENT '快递公司名',
-  `delivery_range` varchar(40) DEFAULT NULL COMMENT '送货区域',
+  `delivery_plan_id` int(11) NOT NULL COMMENT '配送方案id',
+  `delivery_plan_title` varchar(50) DEFAULT NULL COMMENT '配送方案标题',
+  `delivery_plan_carrier` varchar(50) DEFAULT NULL COMMENT '快递公司',
 
   /* 收件人 */
   `to_name` varchar(40) DEFAULT NULL COMMENT '收件人姓名',
@@ -50,7 +51,7 @@ CREATE TABLE `bc_order` (
   `from_tel` varchar(30) DEFAULT NULL COMMENT '发件人电话',
   `from_address` varchar(255) DEFAULT NULL COMMENT '发件人地址',
 
-  /* 物流选项 */
+  /* 扩展选项 */
   `with_photo` tinyint(1) DEFAULT '0' COMMENT '需要拍照',
   `with_sheet` tinyint(1) DEFAULT '0' COMMENT '需要面单',
 
@@ -58,7 +59,10 @@ CREATE TABLE `bc_order` (
   `order_currency` char(3) NOT NULL COMMENT '结算币种',
   `currency_rate` decimal(10,4) NOT NULL COMMENT '结算汇率',
 
-  /* 结算 */
+  /* 订单总金额 */
+  `order_total_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单总金额 以基准币种计',
+
+  /* 订单分项数据 */
   `order_items_count` int(11) DEFAULT '0' COMMENT '订单商品总件数',
   `order_items_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单的商品总金额 以基准币种计',
 
@@ -69,25 +73,23 @@ CREATE TABLE `bc_order` (
   `order_promotion_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单的促销总金额 以基准币种计',
 
   `order_delivery_fee` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '快递费 以基准币种计',
-  `order_insure_fee` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '保价费 以基准币种计',
-
-  `order_adjustment_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '客服的改价总金额 以基准币种计',
 
   `order_tax` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单的总税额 以基准币种计',
 
-  `order_total_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单总金额 以基准币种计',
+  `order_adjustment_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '客服的改价总金额 以基准币种计',
 
   /* 营销 */
   `referer_id` int(11) DEFAULT NULL COMMENT '订单推荐人id',
 
   /* 数据审计 */
-  `created_at` datetime DEFAULT NULL COMMENT '订单的创建时间',
-  `closed_at` datetime DEFAULT NULL COMMENT '订单关闭时间',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '订单的创建时间',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
   PRIMARY KEY (`order_id`),
-  UNIQUE KEY `order_ref` (`order_ref`),
-  KEY `user_id` (`user_id`)
+  KEY `user_id` (`user_id`),
+  KEY `order_ref` (`order_ref`),
+  KEY `channel_order_id` (`channel_order_id`),
+  KEY `channel_order_ref` (`channel_order_ref`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单';
 
 ```
