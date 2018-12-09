@@ -67,7 +67,7 @@ CREATE TABLE `bc_order` (
   `order_items_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单的商品总金额 以基准币种计',
 
   `order_weight` float DEFAULT '0' COMMENT '订单所有商品毛重(克)',
-  `order_delivery_weight` float DEFAULT '0' COMMENT '订单快递计价毛重(克)',
+  `order_billable_weight` float DEFAULT '0' COMMENT '订单快递计价毛重(克)',
 
   `order_discount_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单的折扣总金额 以基准币种计',
   `order_promotion_amount` decimal(12,2) NOT NULL DEFAULT '0.0000' COMMENT '订单的促销总金额 以基准币种计',
