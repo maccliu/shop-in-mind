@@ -15,6 +15,8 @@ CREATE TABLE `bc_delivery_price` (
   `min` int(11) NOT NULL DEFAULT '0' COMMENT '最小重量',
   `max` int(11) NOT NULL DEFAULT '999999' COMMENT '最大重量',
 
+  `currency` varchar(3) DEFAULT 'NZD' COMMENT '币种',
+
   `init` int(11) NOT NULL COMMENT '首重重量',
   `init_price` decimal(12,2) NOT NULL COMMENT '首重价格',
   `step` int(11) DEFAULT NULL COMMENT '续重重量',
