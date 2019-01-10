@@ -1,6 +1,6 @@
 # bc_order_item 基本表
 
-订单商品。
+订单条目。
 
 ## SQL定义
 
@@ -41,7 +41,7 @@ CREATE TABLE `bc_order_item` (
   KEY `order_id` (`order_id`),
   KEY `stu_id` (`stu_id`),
   KEY `delivery_id` (`delivery_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单商品';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单条目';
 
 ```
 
